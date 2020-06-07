@@ -18,7 +18,7 @@ require 'rubocop/rake_task'
 
 Dir['tasks/**/*.rake'].each { |t| load t }
 
-desc 'Run RuboCop over itself'
+desc 'Run RbHint over itself'
 RuboCop::RakeTask.new(:internal_investigation).tap do |task|
   if RUBY_ENGINE == 'ruby' &&
      !/mswin|msys|mingw|cygwin|bccwin|wince|emc/.match?(RbConfig::CONFIG['host_os'])
@@ -38,7 +38,7 @@ YARD::Rake::YardocTask.new
 desc 'Benchmark a cop on given source file/dir'
 task :bench_cop, %i[cop srcpath times] do |_task, args|
   require 'benchmark'
-  require 'rubocop'
+  require 'rbhint'
   include RuboCop
   include RuboCop::Formatter::TextUtil
 
