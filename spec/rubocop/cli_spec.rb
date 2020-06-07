@@ -243,7 +243,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
             # RuboCop will start looking for the configuration file in the directory
             # where the inspected file is and continue its way up to the root directory.
             #
-            # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
+            # See https://github.com/zspencer/rbhint/blob/development/manual/configuration.md
           YAML
         end
       end
