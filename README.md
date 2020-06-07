@@ -40,7 +40,7 @@ haven't reached version 1.0 yet). To prevent an unwanted RbHint update you
 might want to use a conservative version lock in your `Gemfile`:
 
 ```rb
-gem 'rbhint', '~> 0.85.0', require: false
+gem 'rbhint', '~> 0.85.1.rc1', require: false
 ```
 
 ## Quickstart

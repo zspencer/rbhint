@@ -2,11 +2,15 @@
 
 ## development (unreleased)
 
+## 0.85.1 (2020-06-07)
+
 ### Bug fixes
 * [#2](https://github.com/zspencer/rbhint/issues/2): Rename the command line program to `rbhint`
 * [#8083](https://github.com/rubocop-hq/rubocop/issues/8083): Fix an error for `Lint/MixedRegexpCaptureTypes` cop when using a regular expression that cannot be processed by regexp_parser gem. ([@koic][])
 * [#8081](https://github.com/rubocop-hq/rubocop/issues/8081): Fix a false positive for `Lint/SuppressedException` when empty rescue block in `do` block. ([@koic][])
 * [#8096](https://github.com/rubocop-hq/rubocop/issues/8096): Fix a false positive for `Lint/SuppressedException` when empty rescue block in defs. ([@koic][])
+* [#8108](https://github.com/rubocop-hq/rubocop/issues/8108): Fix infinite loop in `Layout/HeredocIndentation` auto-correct. ([@jonas054][])
+* [#8042](https://github.com/rubocop-hq/rubocop/pull/8042): Fix raising error in `Lint::FormatParameterMismatch` when it handles invalid format strings and add new offense. ([@andrykonchin][])
 
 ## 0.85.0 (2020-06-01)
 
@@ -4570,3 +4574,4 @@
 [@jschneid]: https://github.com/jschneid
 [@ric2b]: https://github.com/ric2b
 [@burnettk]: https://github.com/burnettk
+[@andrykonchin]: https://github.com/andrykonchin
