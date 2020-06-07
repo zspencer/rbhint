@@ -1,6 +1,6 @@
 # Change log
 
-## master (unreleased)
+## development (unreleased)
 
 ### New features
 
@@ -25,7 +25,7 @@
 ## 0.85.1 (2020-06-07)
 
 ### Bug fixes
-
+* [#2](https://github.com/zspencer/rbhint/issues/2): Rename the command line program to `rbhint`
 * [#8083](https://github.com/rubocop-hq/rubocop/issues/8083): Fix an error for `Lint/MixedRegexpCaptureTypes` cop when using a regular expression that cannot be processed by regexp_parser gem. ([@koic][])
 * [#8081](https://github.com/rubocop-hq/rubocop/issues/8081): Fix a false positive for `Lint/SuppressedException` when empty rescue block in `do` block. ([@koic][])
 * [#8096](https://github.com/rubocop-hq/rubocop/issues/8096): Fix a false positive for `Lint/SuppressedException` when empty rescue block in defs. ([@koic][])

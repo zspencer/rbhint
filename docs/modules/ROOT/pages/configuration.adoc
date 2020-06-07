@@ -1,7 +1,7 @@
 = Configuration
 
 The behavior of RuboCop can be controlled via the
-https://github.com/rubocop-hq/rubocop/blob/master/.rubocop.yml[.rubocop.yml]
+https://github.com/zspencer/rbhint/blob/development/.rubocop.yml[.rubocop.yml]
 configuration file. It makes it possible to enable/disable certain cops
 (checks) and to alter their behavior if they accept any parameters. The file
 can be placed in your home directory, XDG config directory, or in some project
@@ -49,11 +49,11 @@ files:
 * `/.rubocop.yml`
 * `~/.rubocop.yml`
 * `~/.config/rubocop/config.yml`
-* https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml[RuboCop's default configuration]
+* https://github.com/zspencer/rbhint/blob/development/config/default.yml[RuboCop's default configuration]
 
 == Inheritance
 
-All configuration inherits from https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml[RuboCop's default configuration] (See
+All configuration inherits from https://github.com/zspencer/rbhint/blob/development/config/default.yml[RuboCop's default configuration] (See
 "Defaults").
 
 RuboCop also supports inheritance in user's configuration files. The most common
@@ -187,7 +187,7 @@ have array values should be merged together instead of overriding the inherited
 value.
 
 This applies to explicit inheritance using `inherit_from` as well as implicit
-inheritance from https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml[the default configuration].
+inheritance from https://github.com/zspencer/rbhint/blob/development/config/default.yml[the default configuration].
 
 Given the following config:
 
