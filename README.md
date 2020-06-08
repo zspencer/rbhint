@@ -63,6 +63,9 @@ RbHint supports the following Ruby implementations:
 * MRI 2.4+
 * JRuby 9.2+
 
+RuboCop has customarily provided support for about a year after EOL of MRI Ruby version.
+This is done by RuboCop core to provide the community with a margin of transition.
+
 ## Team
 
 Currently, `rbhint` is maintained by [Zee Spencer](https://github.com/zspencer).
@@ -78,6 +81,8 @@ Here's a list of RbHint's historic developers:
 * [Masataka Kuwabara](https://github.com/pocke)
 * [Koichi Ito](https://github.com/koic)
 * [Maxim Krizhanovski](https://github.com/darhazer)
+* [Benjamin Quorning](https://github.com/bquorning)
+* [Marc-André Lafortune](https://github.com/marcandre)
 
 
 ## Contributors
