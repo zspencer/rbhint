@@ -5,7 +5,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
 
   subject(:cli) { described_class.new }
 
-  let(:rubocop) { "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rubocop" }
+  let(:rubocop) { "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rbhint" }
 
   before do
     RuboCop::ConfigLoader.default_configuration = nil
@@ -246,7 +246,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
           end
         RUBY
         create_file('redirect.rb', '$stderr = STDOUT')
-        rubocop = "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rubocop"
+        rubocop = "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rbhint"
         # Since we define a new cop class, we have to do this in a separate
         # process. Otherwise, the extra cop will affect other specs.
         output =
