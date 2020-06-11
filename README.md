@@ -54,7 +54,7 @@ $ rbhint
 
 ## Documentation
 
-RbHint is a feature-for-feature compatible adaptation of RuboCop, with a kindler, gentler approach to encouragingg change. You can read more about how to use RbHint by reading [RuboCop's official docs](https://docs.rubocop.org).
+RbHint is a feature-for-feature compatible adaptation of RuboCop, with a kinder, gentler approach to encouraging change. You can read more about how to use RbHint by reading [RuboCop's official docs](https://docs.rubocop.org).
 
 ## Compatibility
 
