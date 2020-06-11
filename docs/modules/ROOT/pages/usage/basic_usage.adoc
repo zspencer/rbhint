@@ -80,7 +80,7 @@ See xref:usage/auto_correct.adoc[Auto-correct].
 RbHint comes with a preconfigured set of rules for each of its hints, based on the https://rubystyle.guide[Ruby Style Guide].
 Depending on your project, you may wish to reconfigure a hint, tell to ignore certain files, or disable it altogether.
 
-The most common way to change RbHint's behaviour is to create a configuration file named `.rbhint.yml` in the
+The most common way to change RbHint's behaviour is to create a configuration file named `.rubocop.yml` in the
 project's root directory.
 
 For more information, see xref:configuration.adoc[Configuration].
@@ -136,19 +136,19 @@ $ rbhint -h
 | `-d/--debug`
 | Displays some extra debug output.
 
-| `   --disable-pending-hints`
+| `   --disable-pending-cops`
 | Run without pending hints.
 
 | `   --disable-uncorrectable`
-| Used with --auto-correct to annotate any offenses that do not support autocorrect with `rbhint:todo` comments.
+| Used with --auto-correct to annotate any offenses that do not support autocorrect with `rubocop:todo` comments.
 
-| `-D/--[no-]display-hint-names`
+| `-D/--[no-]display-cop-names`
 | Displays hint names in offense messages. Default is true.
 
 | `   --display-only-fail-level-offenses`
 | Only output offense messages at the specified `--fail-level` or above
 
-| `   --enable-pending-hints`
+| `   --enable-pending-cops`
 | Run with pending hints.
 
 | `   --except`
@@ -173,16 +173,16 @@ $ rbhint -h
 | Force excluding files specified in the configuration `Exclude` even if they are explicitly passed as arguments.
 
 | `   --only-recognized-file-types`
-| Inspect files given on the command line only if they are listed in `AllHints`/`Include` parameters of user configuration or default configuration.
+| Inspect files given on the command line only if they are listed in `AllCops`/`Include` parameters of user configuration or default configuration.
 
 | `-h/--help`
 | Print usage information.
 
 | `   --ignore-parent-exclusion`
-| Ignores all Exclude: settings from all .rbhint.yml files present in parent folders. This is useful when you are importing submodules when you want to test them without being affected by the parent module's rbhint settings.
+| Ignores all Exclude: settings from all .rubocop.yml files present in parent folders. This is useful when you are importing submodules when you want to test them without being affected by the parent module's RbHint settings.
 
 | `   --init`
-| Generate a .rbhint.yml file in the current directory.
+| Generate a .rubocop.yml file in the current directory.
 
 | `-l/--lint`
 | Run only lint hints.
@@ -214,7 +214,7 @@ $ rbhint -h
 | `   --safe-auto-correct`
 | Omit hints annotated as "not safe". See xref:auto_correct.adoc[Auto-correct].
 
-| `   --show-hints`
+| `   --show-cops`
 | Shows available hints and their configuration.
 
 | `-s/--stdin`
@@ -230,12 +230,12 @@ $ rbhint -h
 | Displays the current version plus the version of Parser and Ruby.
 |===
 
-Default command-line options are loaded from `.rbhint` and `RBHINT_OPTS` and are combined with command-line options that are explicitly passed to `rbhint`.
+Default command-line options are loaded from `.rubocop.yml` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rbhint`.
 Thus, the options have the following order of precedence (from highest to lowest):
 
 . Explicit command-line options
-. Options from `RBHINT_OPTS` environment variable
-. Options from `.rbhint` file.
+. Options from `RUBOCOP_OPTS` environment variable
+. Options from `.rubocop.yml` file.
 
 == Exit codes
 
