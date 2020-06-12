@@ -12,7 +12,7 @@
 | -
 |===
 
-This cop makes sure that accessor methods are named properly.
+This hint makes sure that accessor methods are named properly.
 
 === Examples
 
@@ -51,7 +51,7 @@ end
 | -
 |===
 
-This cop checks for non-ascii characters in identifier names.
+This hint checks for non-ascii characters in identifier names.
 
 === Examples
 
@@ -102,7 +102,7 @@ params[:width_gteq]
 | -
 |===
 
-This cop makes sure that certain binary operator methods have their
+This hint makes sure that certain binary operator methods have their
 sole  parameter named `other`.
 
 === Examples
@@ -132,17 +132,17 @@ def +(other); end
 | 0.77
 |===
 
-This cop checks block parameter names for how descriptive they
+This hint checks block parameter names for how descriptive they
 are. It is highly configurable.
 
 The `MinNameLength` config option takes an integer. It represents
 the minimum amount of characters the name must be. Its default is 1.
 The `AllowNamesEndingInNumbers` config option takes a boolean. When
-set to false, this cop will register offenses for names ending with
+set to false, this hint will register flags for names ending with
 numbers. Its default is false. The `AllowedNames` config option
-takes an array of permitted names that will never register an
-offense. The `ForbiddenNames` config option takes an array of
-restricted names that will always register an offense.
+takes an array of permitted names that will never register a
+flag. The `ForbiddenNames` config option takes an array of
+restricted names that will always register a flag.
 
 === Examples
 
@@ -203,7 +203,7 @@ baz { |age, height, gender| do_stuff(age, height, gender) }
 | 0.85
 |===
 
-This cop checks for class and module names with
+This hint checks for class and module names with
 an underscore in them.
 
 `AllowedNames` config takes an array of permitted names.
@@ -257,7 +257,7 @@ end
 | -
 |===
 
-This cop checks whether constant names are written using
+This hint checks whether constant names are written using
 SCREAMING_SNAKE_CASE.
 
 To avoid false positives, it ignores cases in which we cannot know
@@ -292,11 +292,11 @@ INCH_IN_CM = 2.54
 | -
 |===
 
-This cop makes sure that Ruby source files have snake_case
+This hint makes sure that Ruby source files have snake_case
 names. Ruby scripts (i.e. source files with a shebang in the
 first line) are ignored.
 
-The cop also ignores `.gemspec` files, because Bundler
+The hint also ignores `.gemspec` files, because Bundler
 recommends using dashes to separate namespaces in nested gems
 (i.e. `bundler-console` becomes `Bundler::Console`). As such, the
 gemspec is supposed to be named `bundler-console.gemspec`.
@@ -362,7 +362,7 @@ anything/using_snake_case.rake
 | -
 |===
 
-This cop checks that your heredocs are using the configured case.
+This hint checks that your heredocs are using the configured case.
 By default it is configured to enforce uppercase heredocs.
 
 === Examples
@@ -423,7 +423,7 @@ sql
 | -
 |===
 
-This cop checks that your heredocs are using meaningful delimiters.
+This hint checks that your heredocs are using meaningful delimiters.
 By default it disallows `END` and `EO*`, and can be configured through
 forbidden listing additional delimiters.
 
@@ -473,10 +473,10 @@ EOS
 | 0.58
 |===
 
-This cop checks for memoized methods whose instance variable name
+This hint checks for memoized methods whose instance variable name
 does not match the method name.
 
-This cop can be configured with the EnforcedStyleForLeadingUnderscores
+This hint can be configured with the EnforcedStyleForLeadingUnderscores
 directive. It can be configured to allow for memoized instance variables
 prefixed with an underscore. Prefixing ivars with an underscore is a
 convention that is used to implicitly indicate that an ivar should not
@@ -591,10 +591,10 @@ end
 | -
 |===
 
-This cop makes sure that all methods use the configured style,
+This hint makes sure that all methods use the configured style,
 snake_case or camelCase, for their names.
 
-This cop has `IgnoredPatterns` configuration option.
+This hint has `IgnoredPatterns` configuration option.
 
   Naming/MethodName:
     IgnoredPatterns:
@@ -657,17 +657,17 @@ def fooBar; end
 | 0.77
 |===
 
-This cop checks method parameter names for how descriptive they
+This hint checks method parameter names for how descriptive they
 are. It is highly configurable.
 
 The `MinNameLength` config option takes an integer. It represents
 the minimum amount of characters the name must be. Its default is 3.
 The `AllowNamesEndingInNumbers` config option takes a boolean. When
-set to false, this cop will register offenses for names ending with
+set to false, this hint will register flags for names ending with
 numbers. Its default is false. The `AllowedNames` config option
-takes an array of permitted names that will never register an
-offense. The `ForbiddenNames` config option takes an array of
-restricted names that will always register an offense.
+takes an array of permitted names that will never register a
+flag. The `ForbiddenNames` config option takes an array of
+restricted names that will always register a flag.
 
 === Examples
 
@@ -736,7 +736,7 @@ end
 | 0.77
 |===
 
-This cop makes sure that predicates are named properly.
+This hint makes sure that predicates are named properly.
 
 === Examples
 
@@ -807,7 +807,7 @@ end
 | 0.68
 |===
 
-This cop makes sure that rescued exceptions variables are named as
+This hint makes sure that rescued exceptions variables are named as
 expected.
 
 The `PreferredName` config option takes a `String`. It represents
@@ -889,7 +889,7 @@ end
 | -
 |===
 
-This cop makes sure that all variables use the configured style,
+This hint makes sure that all variables use the configured style,
 snake_case or camelCase, for their names.
 
 === Examples
@@ -942,7 +942,7 @@ fooBar = 1
 | -
 |===
 
-This cop makes sure that all numbered variables use the
+This hint makes sure that all numbered variables use the
 configured style, snake_case, normalcase, or non_integer,
 for their numbering.
 

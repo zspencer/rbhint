@@ -1,6 +1,6 @@
 = Extensions
 
-It's possible to extend RuboCop with custom cops and formatters.
+It's possible to extend RbHint with custom hints and formatters.
 
 == Loading Extensions
 
@@ -12,7 +12,7 @@ files that should be loaded with the optional `require` directive in the
 ----
 require:
  - ../my/custom/file.rb
- - rubocop-extension
+ - rbhint-extension
 ----
 
 NOTE: The paths are directly passed to `Kernel.require`. If your
@@ -20,18 +20,18 @@ extension file is not in `$LOAD_PATH`, you need to specify the path as
 relative path prefixed with `./` explicitly or absolute path. Paths
 starting with a `.` are resolved relative to `.rubocop.yml`.
 
-== Custom Cops
+== Custom Hints
 
-You can configure the custom cops in your `.rubocop.yml` just like any
-other cop.
+You can configure the custom hints in your `.rubocop.yml` just like any
+other hint.
 
-=== Writing your own Cops
+=== Writing your own Hints
 
 If you'd like to create an extension gem, you can use https://github.com/rubocop-hq/rubocop-extension-generator[rubocop-extension-generator].
 
-See xref:development.adoc[development] to learn how to implement a cop.
+See xref:development.adoc[development] to learn how to implement a hint.
 
-=== Known Custom Cops
+=== Known Custom Hints
 
 * https://github.com/rubocop-hq/rubocop-performance[rubocop-performance] -
 Performance optimization analysis
@@ -48,7 +48,7 @@ i18n wrapper function analysis (gettext and rails-i18n)
 * https://github.com/rubocop-hq/rubocop-sequel[rubocop-sequel] -
 Code style checking for Sequel gem
 * https://github.com/chef/cookstyle[cookstyle] -
-Custom cops and config defaults for Chef Infra Cookbooks
+Custom hints and config defaults for Chef Infra Cookbooks
 * https://github.com/rubocop-hq/rubocop-rake[rubocop-rake] -
 Rake-specific analysis
 
@@ -56,7 +56,7 @@ Any extensions missing? Send us a Pull Request!
 
 == Custom Formatters
 
-You can customize RuboCop's output format with custom formatters.
+You can customize RbHint's output format with custom formatters.
 
 === Creating a Custom Formatter
 
@@ -72,12 +72,12 @@ Please see the documents below for more formatter API details.
 
 === Using a Custom Formatter from the Command Line
 
-You can tell RuboCop to use your custom formatter with a combination of
+You can tell RbHint to use your custom formatter with a combination of
 `--format` and `--require` option.
 For example, when you have defined `MyCustomFormatter` in
 `./path/to/my_custom_formatter.rb`, you would type this command:
 
 [source,sh]
 ----
-$ rubocop --require ./path/to/my_custom_formatter --format MyCustomFormatter
+$ rbhint --require ./path/to/my_custom_formatter --format MyCustomFormatter
 ----

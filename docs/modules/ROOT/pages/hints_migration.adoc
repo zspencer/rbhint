@@ -12,5 +12,5 @@
 | -
 |===
 
-Check that cop names in rubocop:disable comments are given with
+Check that hint names in rubocop:disable comments are given with
 department name.

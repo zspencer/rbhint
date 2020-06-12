@@ -12,7 +12,7 @@
 | -
 |===
 
-This cop checks for the use of `Kernel#eval` and `Binding#eval`.
+This hint checks for the use of `Kernel#eval` and `Binding#eval`.
 
 === Examples
 
@@ -36,7 +36,7 @@ binding.eval(something)
 | 0.44
 |===
 
-This cop checks for the use of JSON class methods which have potential
+This hint checks for the use of JSON class methods which have potential
 security issues.
 
 Autocorrect is disabled by default because it's potentially dangerous.
@@ -85,7 +85,7 @@ JSON.parse("{}")
 | -
 |===
 
-This cop checks for the use of Marshal class methods which have
+This hint checks for the use of Marshal class methods which have
 potential security issues leading to remote code execution when
 loading from an untrusted source.
 
@@ -120,7 +120,7 @@ Marshal.load(Marshal.dump({}))
 | -
 |===
 
-This cop checks for the use of `Kernel#open`.
+This hint checks for the use of `Kernel#open`.
 
 `Kernel#open` enables not only file access but also process invocation
 by prefixing a pipe symbol (e.g., `open("| ls")`). So, it may lead to
@@ -153,7 +153,7 @@ URI.parse(something).open
 | -
 |===
 
-This cop checks for the use of YAML class methods which have
+This hint checks for the use of YAML class methods which have
 potential security issues leading to remote code execution when
 loading from an untrusted source.
 

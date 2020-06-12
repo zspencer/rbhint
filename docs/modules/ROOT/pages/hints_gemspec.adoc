@@ -26,13 +26,13 @@ permitted because it is the intended use of appending values.
 ----
 # bad
 Gem::Specification.new do |spec|
-  spec.name = 'rubocop'
-  spec.name = 'rubocop2'
+  spec.name = 'rbhint'
+  spec.name = 'rbhint2'
 end
 
 # good
 Gem::Specification.new do |spec|
-  spec.name = 'rubocop'
+  spec.name = 'rbhint'
 end
 
 # good
@@ -77,47 +77,47 @@ Dependencies in the gemspec should be alphabetically sorted.
 [source,ruby]
 ----
 # bad
-spec.add_dependency 'rubocop'
+spec.add_dependency 'rbhint'
 spec.add_dependency 'rspec'
 
 # good
 spec.add_dependency 'rspec'
-spec.add_dependency 'rubocop'
+spec.add_dependency 'rbhint'
 
 # good
-spec.add_dependency 'rubocop'
+spec.add_dependency 'rbhint'
 
 spec.add_dependency 'rspec'
 
 # bad
-spec.add_development_dependency 'rubocop'
+spec.add_development_dependency 'rbhint'
 spec.add_development_dependency 'rspec'
 
 # good
 spec.add_development_dependency 'rspec'
-spec.add_development_dependency 'rubocop'
+spec.add_development_dependency 'rbhint'
 
 # good
-spec.add_development_dependency 'rubocop'
+spec.add_development_dependency 'rbhint'
 
 spec.add_development_dependency 'rspec'
 
 # bad
-spec.add_runtime_dependency 'rubocop'
+spec.add_runtime_dependency 'rbhint'
 spec.add_runtime_dependency 'rspec'
 
 # good
 spec.add_runtime_dependency 'rspec'
-spec.add_runtime_dependency 'rubocop'
+spec.add_runtime_dependency 'rbhint'
 
 # good
-spec.add_runtime_dependency 'rubocop'
+spec.add_runtime_dependency 'rbhint'
 
 spec.add_runtime_dependency 'rspec'
 
 # good only if TreatCommentsAsGroupSeparators is true
 # For code quality
-spec.add_dependency 'rubocop'
+spec.add_dependency 'rbhint'
 # For tests
 spec.add_dependency 'rspec'
 ----
@@ -150,7 +150,7 @@ spec.add_dependency 'rspec'
 
 Checks that `required_ruby_version` of gemspec and `TargetRubyVersion`
 of .rubocop.yml are equal.
-Thereby, RuboCop to perform static analysis working on the version
+Thereby, RbHint to perform static analysis working on the version
 required by gemspec.
 
 === Examples

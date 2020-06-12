@@ -12,7 +12,7 @@
 | -
 |===
 
-This cop checks for ambiguous block association with method
+This hint checks for ambiguous block association with method
 when param passed without parentheses.
 
 === Examples
@@ -54,7 +54,7 @@ foo = ->(bar) { bar.baz }
 | 0.83
 |===
 
-This cop checks for ambiguous operators in the first argument of a
+This hint checks for ambiguous operators in the first argument of a
 method invocation without parentheses.
 
 === Examples
@@ -92,7 +92,7 @@ do_something(*some_array)
 | 0.83
 |===
 
-This cop checks for ambiguous regexp literals in the first argument of
+This hint checks for ambiguous regexp literals in the first argument of
 a method invocation without parentheses.
 
 === Examples
@@ -127,7 +127,7 @@ do_something(/pattern/i)
 | -
 |===
 
-This cop checks for assignments in the conditions of
+This hint checks for assignments in the conditions of
 if/while/until.
 
 `AllowSafeAssignment` option for safe assignment.
@@ -197,7 +197,7 @@ end
 |===
 
 `BigDecimal.new()` is deprecated since BigDecimal 1.3.3.
-This cop identifies places where `BigDecimal.new()`
+This hint identifies places where `BigDecimal.new()`
 can be replaced by `BigDecimal()`.
 
 === Examples
@@ -223,7 +223,7 @@ BigDecimal(123.456, 3)
 | 0.83
 |===
 
-This cop checks for `:true` and `:false` symbols.
+This hint checks for `:true` and `:false` symbols.
 In most cases it would be a typo.
 
 === Examples
@@ -258,10 +258,10 @@ false
 | -
 |===
 
-This cop checks for circular argument references in optional keyword
+This hint checks for circular argument references in optional keyword
 arguments and optional ordinal arguments.
 
-This cop mirrors a warning produced by MRI since 2.2.
+This hint mirrors a warning produced by MRI since 2.2.
 
 === Examples
 
@@ -322,7 +322,7 @@ end
 | 0.49
 |===
 
-This cop checks for calls to debugger or pry.
+This hint checks for calls to debugger or pry.
 
 === Examples
 
@@ -369,7 +369,7 @@ end
 | -
 |===
 
-This cop checks for uses of the deprecated class method usages.
+This hint checks for uses of the deprecated class method usages.
 
 === Examples
 
@@ -454,10 +454,10 @@ OpenSSL::Digest.digest('SHA256', 'foo')
 | -
 |===
 
-This cop checks constructors for disjunctive assignments that should
+This hint checks constructors for disjunctive assignments that should
 be plain assignments.
 
-So far, this cop is only concerned with disjunctive assignment of
+So far, this hint is only concerned with disjunctive assignment of
 instance variables.
 
 In ruby, an instance variable is nil until a value is assigned, so the
@@ -490,7 +490,7 @@ end
 | -
 |===
 
-This cop checks that there are no repeated conditions
+This hint checks that there are no repeated conditions
 used in case 'when' expressions.
 
 === Examples
@@ -531,9 +531,9 @@ end
 | 0.77
 |===
 
-This cop checks for duplicated keys in hash literals.
+This hint checks for duplicated keys in hash literals.
 
-This cop mirrors a warning in Ruby 2.2.
+This hint mirrors a warning in Ruby 2.2.
 
 === Examples
 
@@ -563,7 +563,7 @@ hash = { food: 'apple', other_food: 'orange' }
 | -
 |===
 
-This cop checks for duplicated instance (or singleton) method
+This hint checks for duplicated instance (or singleton) method
 definitions.
 
 === Examples
@@ -628,7 +628,7 @@ alias bar foo
 | -
 |===
 
-This cop checks if each_with_object is called with an immutable
+This hint checks if each_with_object is called with an immutable
 argument. Since the argument is the object that the given block shall
 make calls on to build something based on the enumerable that
 each_with_object iterates over, an immutable argument makes no sense.
@@ -663,7 +663,7 @@ sum = numbers.each_with_object(num) { |e, a| a += e }
 | -
 |===
 
-This cop checks for odd else block layout - like
+This hint checks for odd else block layout - like
 having an expression on the same line as the else keyword,
 which is usually a mistake.
 
@@ -704,7 +704,7 @@ end
 | 0.48
 |===
 
-This cop checks for empty `ensure` blocks
+This hint checks for empty `ensure` blocks
 
 === Examples
 
@@ -772,7 +772,7 @@ end
 | -
 |===
 
-This cop checks for the presence of empty expressions.
+This hint checks for the presence of empty expressions.
 
 === Examples
 
@@ -808,7 +808,7 @@ end
 | 0.45
 |===
 
-This cop checks for empty interpolation.
+This hint checks for empty interpolation.
 
 === Examples
 
@@ -838,7 +838,7 @@ This cop checks for empty interpolation.
 | 0.83
 |===
 
-This cop checks for the presence of `when` branches without a body.
+This hint checks for the presence of `when` branches without a body.
 
 === Examples
 
@@ -911,7 +911,7 @@ end
 | 0.83
 |===
 
-This cop checks for `return` from an `ensure` block.
+This hint checks for `return` from an `ensure` block.
 Explicit return from an ensure block alters the control flow
 as the return will take precedence over any exception being raised,
 and the exception will be silently thrown away as if it were rescued.
@@ -959,7 +959,7 @@ NOTE: Required Ruby version: 2.6
 | -
 |===
 
-This cop emulates the following Ruby warnings in Ruby 2.6.
+This hint emulates the following Ruby warnings in Ruby 2.6.
 
 % cat example.rb
 ERB.new('hi', nil, '-', '@output_buffer')
@@ -978,7 +978,7 @@ Now non-keyword arguments other than first one are softly deprecated
 and will be removed when Ruby 2.5 becomes EOL.
 `ERB.new` with non-keyword arguments is deprecated since ERB 2.2.0.
 Use `:trim_mode` and `:eoutvar` keyword arguments to `ERB.new`.
-This cop identifies places where `ERB.new(str, trim_mode, eoutvar)` can
+This hint identifies places where `ERB.new(str, trim_mode, eoutvar)` can
 be replaced by `ERB.new(str, :trim_mode: trim_mode, eoutvar: eoutvar)`.
 
 === Examples
@@ -1030,7 +1030,7 @@ end
 | -
 |===
 
-This cop looks for uses of flip-flop operator.
+This hint looks for uses of flip-flop operator.
 flip-flop operator is deprecated since Ruby 2.6.0.
 
 === Examples
@@ -1064,7 +1064,7 @@ end
 | -
 |===
 
-This cop identifies Float literals which are, like, really really really
+This hint identifies Float literals which are, like, really really really
 really really really really really big. Too big. No-one needs Floats
 that big. If you need a float that big, something is wrong with you.
 
@@ -1146,7 +1146,7 @@ format('Numbered format: %1$s and numbered %2$s', a_value, another)
 | -
 |===
 
-This cop checks for the ordering of a method call where
+This hint checks for the ordering of a method call where
 the receiver of the call is a HEREDOC.
 
 === Examples
@@ -1193,7 +1193,7 @@ the receiver of the call is a HEREDOC.
 | -
 |===
 
-This cop checks for implicit string concatenation of string literals
+This hint checks for implicit string concatenation of string literals
 which are on the same line.
 
 === Examples
@@ -1229,7 +1229,7 @@ array = [
 | -
 |===
 
-This cop checks for `private` or `protected` access modifiers which are
+This hint checks for `private` or `protected` access modifiers which are
 applied to a singleton method. These access modifiers do not make
 singleton methods private/protected. `private_class_method` can be
 used for that.
@@ -1289,7 +1289,7 @@ end
 | -
 |===
 
-This cop looks for error classes inheriting from `Exception`
+This hint looks for error classes inheriting from `Exception`
 and its standard library subclasses, excluding subclasses of
 `StandardError`. It is configurable to suggest using either
 `RuntimeError` (default) or `StandardError` instead.
@@ -1352,7 +1352,7 @@ C = Class.new(StandardError)
 | -
 |===
 
-This cop checks for interpolation in a single quoted string.
+This hint checks for interpolation in a single quoted string.
 
 === Examples
 
@@ -1382,7 +1382,7 @@ foo = "something with #{interpolation} inside"
 | -
 |===
 
-This cop checks for literals used as the conditions or as
+This hint checks for literals used as the conditions or as
 operands in and/or expressions serving as the conditions of
 if/while/until.
 
@@ -1424,7 +1424,7 @@ end
 | 0.32
 |===
 
-This cop checks for interpolated literals.
+This hint checks for interpolated literals.
 
 === Examples
 
@@ -1454,7 +1454,7 @@ This cop checks for interpolated literals.
 | -
 |===
 
-This cop checks for uses of `begin...end while/until something`.
+This hint checks for uses of `begin...end while/until something`.
 
 === Examples
 
@@ -1516,9 +1516,9 @@ end
 | -
 |===
 
-This cop checks that there is an `# rubocop:enable ...` statement
+This hint checks that there is an `# rubocop:enable ...` statement
 after a `# rubocop:disable ...` statement. This will prevent leaving
-cop disables on wide ranges of code, that latter contributors to
+hint disables on wide ranges of code, that latter contributors to
 a file wouldn't be aware of.
 
 === Examples
@@ -1549,14 +1549,14 @@ x= 0
 # good
 # rubocop:disable Layout/SpaceAroundOperators
 x= 0
-# With the previous, there are 2 lines on which cop is disabled.
+# With the previous, there are 2 lines on which hint is disabled.
 # rubocop:enable Layout/SpaceAroundOperators
 
 # bad
 # rubocop:disable Layout/SpaceAroundOperators
 x= 0
 x += 1
-# Including this, that's 3 lines on which the cop is disabled.
+# Including this, that's 3 lines on which the hint is disabled.
 # rubocop:enable Layout/SpaceAroundOperators
 ----
 
@@ -1613,7 +1613,7 @@ named captures.
 
 In math and Python, we can use `x < y < z` style comparison to compare
 multiple value. However, we can't use the comparison in Ruby. However,
-the comparison is not syntax error. This cop checks the bad usage of
+the comparison is not syntax error. This hint checks the bad usage of
 comparison operators.
 
 === Examples
@@ -1646,7 +1646,7 @@ x < y && y < z
 | -
 |===
 
-This cop checks for nested method definitions.
+This hint checks for nested method definitions.
 
 === Examples
 
@@ -1720,7 +1720,7 @@ end
 | -
 |===
 
-This cop checks for nested percent literals.
+This hint checks for nested percent literals.
 
 === Examples
 
@@ -1832,8 +1832,8 @@ end
 | -
 |===
 
-This cop checks for non-local exits from iterators without a return
-value. It registers an offense under these conditions:
+This hint checks for non-local exits from iterators without a return
+value. It registers a flag under these conditions:
 
 * No value is returned,
 * the block is preceded by a method chain,
@@ -1882,9 +1882,9 @@ end
 | 0.70
 |===
 
-This cop warns the usage of unsafe number conversions. Unsafe
+This hint warns the usage of unsafe number conversions. Unsafe
 number conversion can cause unexpected error if auto type conversion
-fails. Cop prefer parsing with number class instead.
+fails. Hint prefer parsing with number class instead.
 
 === Examples
 
@@ -1986,7 +1986,7 @@ do_something (foo * bar).baz
 | -
 |===
 
-This cop checks for quotes and commas in %w, e.g. `%w('foo', "bar")`
+This hint checks for quotes and commas in %w, e.g. `%w('foo', "bar")`
 
 It is more likely that the additional characters are unintended (for
 example, mistranslating an array of literals to percent string notation)
@@ -2020,7 +2020,7 @@ rather than meant to be part of the resulting strings.
 | -
 |===
 
-This cop checks for colons and commas in %i, e.g. `%i(:foo, :bar)`
+This hint checks for colons and commas in %i, e.g. `%i(:foo, :bar)`
 
 It is more likely that the additional characters are unintended (for
 example, mistranslating an array of literals to percent string notation)
@@ -2054,11 +2054,11 @@ rather than meant to be part of the resulting symbols.
 | -
 |===
 
-This cop checks for `raise` or `fail` statements which are
+This hint checks for `raise` or `fail` statements which are
 raising `Exception` class.
 
 You can specify a module name that will be an implicit namespace
-using `AllowedImplicitNamespaces` option. The cop cause a false positive
+using `AllowedImplicitNamespaces` option. The hint cause a false positive
 for namespaced `Exception` when a namespace is omitted. This option can
 prevent the false positive by specifying a namespace to be omitted for
 `Exception`. Alternatively, make `Exception` a fully qualified class
@@ -2113,7 +2113,7 @@ end
 | -
 |===
 
-This cop checks for `rand(1)` calls.
+This hint checks for `rand(1)` calls.
 Such calls always return `0`.
 
 === Examples
@@ -2147,15 +2147,15 @@ rand(-1.0)
 | -
 |===
 
-This cop detects instances of rubocop:disable comments that can be
-removed without causing any offenses to be reported. It's implemented
-as a cop in that it inherits from the Cop base class and calls
+This hint detects instances of rubocop:disable comments that can be
+removed without causing any flags to be reported. It's implemented
+as a hint in that it inherits from the Cop base class and calls
 add_offense. The unusual part of its implementation is that it doesn't
 have any on_* methods or an investigate method. This means that it
-doesn't take part in the investigation phase when the other cops do
+doesn't take part in the investigation phase when the other hints do
 their work. Instead, it waits until it's called in a later stage of the
-execution. The reason it can't be implemented as a normal cop is that
-it depends on the results of all other cops to do its work.
+execution. The reason it can't be implemented as a normal hint is that
+it depends on the results of all other hints to do its work.
 
 === Examples
 
@@ -2182,11 +2182,11 @@ x += 1
 | -
 |===
 
-This cop detects instances of rubocop:enable comments that can be
+This hint detects instances of rubocop:enable comments that can be
 removed.
 
-When comment enables all cops at once `rubocop:enable all`
-that cop checks whether any cop was actually enabled.
+When comment enables all hints at once `rubocop:enable all`
+that hint checks whether any hint was actually enabled.
 
 === Examples
 
@@ -2237,7 +2237,7 @@ they are already loaded.
   ruby 2.2.8p477 (2017-09-14 revision 59906) [x86_64-darwin13]
   ["enumerator.so", "rational.so", "complex.so", "thread.rb"]
 
-This cop targets Ruby 2.2 or higher containing these 4 features.
+This hint targets Ruby 2.2 or higher containing these 4 features.
 
 === Examples
 
@@ -2263,7 +2263,7 @@ require 'unloaded_feature'
 | -
 |===
 
-This cop checks for unneeded usages of splat expansion
+This hint checks for unneeded usages of splat expansion
 
 === Examples
 
@@ -2326,7 +2326,7 @@ end
 | 0.77
 |===
 
-This cop checks for string conversion in string interpolation,
+This hint checks for string conversion in string interpolation,
 which is redundant.
 
 === Examples
@@ -2361,7 +2361,7 @@ which is redundant.
 | -
 |===
 
-This cop checks for redundant `with_index`.
+This hint checks for redundant `with_index`.
 
 === Examples
 
@@ -2400,7 +2400,7 @@ end
 | -
 |===
 
-This cop checks for redundant `with_object`.
+This hint checks for redundant `with_object`.
 
 === Examples
 
@@ -2439,7 +2439,7 @@ end
 | -
 |===
 
-This cop checks for regexp literals used as `match-current-line`.
+This hint checks for regexp literals used as `match-current-line`.
 If a regexp literal is in condition, the regexp matches `$_` implicitly.
 
 === Examples
@@ -2469,7 +2469,7 @@ end
 | -
 |===
 
-This cop checks for expressions where there is a call to a predicate
+This hint checks for expressions where there is a call to a predicate
 method with at least one argument, where no parentheses are used around
 the parameter list, and a boolean operator, && or ||, is used in the
 last argument.
@@ -2510,7 +2510,7 @@ end
 | 0.27.1
 |===
 
-This cop checks for `rescue` blocks targeting the Exception class.
+This hint checks for `rescue` blocks targeting the Exception class.
 
 === Examples
 
@@ -2600,7 +2600,7 @@ end
 | -
 |===
 
-This cop checks for the use of a return with a value in a context
+This hint checks for the use of a return with a value in a context
 where the value will be ignored. (initialize and setter methods)
 
 === Examples
@@ -2649,7 +2649,7 @@ The safe navigation operator returns nil if the receiver is
 nil. If you chain an ordinary method call after a safe
 navigation operator, it raises NoMethodError. We should use a
 safe navigation operator after a safe navigation operator.
-This cop checks for the problem outlined above.
+This hint checks for the problem outlined above.
 
 === Examples
 
@@ -2692,7 +2692,7 @@ x&.foo || bar
 | 0.77
 |===
 
-This cop check to make sure that if safe navigation is used for a method
+This hint check to make sure that if safe navigation is used for a method
 call in an `&&` or `||` condition that safe navigation is used for all
 method calls on that same object.
 
@@ -2741,7 +2741,7 @@ foo&.bar && (foobar.baz || foo&.baz)
 | -
 |===
 
-This cop checks to make sure safe navigation isn't used with `empty?` in
+This hint checks to make sure safe navigation isn't used with `empty?` in
 a conditional.
 
 While the safe navigation operator is generally a good idea, when
@@ -2773,7 +2773,7 @@ return unless foo && foo.empty?
 | 0.50
 |===
 
-This cop checks if a file which has a shebang line as
+This hint checks if a file which has a shebang line as
 its first line is granted execute permission.
 
 === Examples
@@ -2816,11 +2816,11 @@ puts 'hello, world'
 | -
 |===
 
-This cop checks for `send`, `public_send`, and `__send__` methods
+This hint checks for `send`, `public_send`, and `__send__` methods
 when using mix-in.
 
 `include` and `prepend` methods were private methods until Ruby 2.0,
-they were mixed-in via `send` method. This cop uses Ruby 2.1 or
+they were mixed-in via `send` method. This hint uses Ruby 2.1 or
 higher style that can be called by public methods.
 And `extend` method that was originally a public method is also targeted
 for style unification.
@@ -2862,9 +2862,9 @@ Foo.extend Bar
 | -
 |===
 
-This cop checks for shadowed arguments.
+This hint checks for shadowed arguments.
 
-This cop has `IgnoreImplicitReferences` configuration option.
+This hint has `IgnoreImplicitReferences` configuration option.
 It means argument shadowing is used in order to pass parameters
 to zero arity `super` when `IgnoreImplicitReferences` is `true`.
 
@@ -2953,7 +2953,7 @@ end
 | -
 |===
 
-This cop checks for a rescued exception that get shadowed by a
+This hint checks for a rescued exception that get shadowed by a
 less specific exception being rescued before a more specific
 exception is rescued.
 
@@ -3008,7 +3008,7 @@ end
 | -
 |===
 
-This cop looks for use of the same name as outer local variables
+This hint looks for use of the same name as outer local variables
 for block arguments or block local variables.
 This is a mimic of the warning
 "shadowing outer local variable - foo" from `ruby -cw`.
@@ -3053,7 +3053,7 @@ end
 | -
 |===
 
-This cop checks unexpected overrides of the `Struct` built-in methods
+This hint checks unexpected overrides of the `Struct` built-in methods
 via `Struct.new`.
 
 === Examples
@@ -3087,7 +3087,7 @@ g.count #=> 2
 | 0.81
 |===
 
-This cop checks for `rescue` blocks with no body.
+This hint checks for `rescue` blocks with no body.
 
 === Examples
 
@@ -3184,9 +3184,9 @@ end
 | -
 |===
 
-This is not actually a cop. It does not inspect anything. It just
+This is not actually a hint. It does not inspect anything. It just
 provides methods to repack Parser's diagnostics/errors
-into RuboCop's offenses.
+into RbHint's flags.
 
 == Lint/ToJSON
 
@@ -3200,7 +3200,7 @@ into RuboCop's offenses.
 | -
 |===
 
-This cop checks to make sure `#to_json` includes an optional argument.
+This hint checks to make sure `#to_json` includes an optional argument.
 When overriding `#to_json`, callers may invoke JSON
 generation via `JSON.generate(your_obj)`.  Since `JSON#generate` allows
 for an optional argument, your method should too.
@@ -3230,7 +3230,7 @@ end
 | -
 |===
 
-This cop checks for underscore-prefixed variables that are actually
+This hint checks for underscore-prefixed variables that are actually
 used.
 
 Since block keyword arguments cannot be arbitrarily named at call
@@ -3297,7 +3297,7 @@ end
 | -
 |===
 
-This cop checks for using Fixnum or Bignum constant.
+This hint checks for using Fixnum or Bignum constant.
 
 === Examples
 
@@ -3328,7 +3328,7 @@ This cop checks for using Fixnum or Bignum constant.
 | -
 |===
 
-This cop checks for unreachable code.
+This hint checks for unreachable code.
 The check are based on the presence of flow of control
 statement in non-final position in `begin` (implicit) blocks.
 
@@ -3376,7 +3376,7 @@ end
 | 0.22
 |===
 
-This cop checks for unused block arguments.
+This hint checks for unused block arguments.
 
 === Examples
 
@@ -3475,7 +3475,7 @@ end
 | 0.81
 |===
 
-This cop checks for unused method arguments.
+This hint checks for unused method arguments.
 
 === Examples
 
@@ -3592,10 +3592,10 @@ end
 | -
 |===
 
-This cop identifies places where `URI.escape` can be replaced by
+This hint identifies places where `URI.escape` can be replaced by
 `CGI.escape`, `URI.encode_www_form`, or `URI.encode_www_form_component`
 depending on your specific use case.
-Also this cop identifies places where `URI.unescape` can be replaced by
+Also this hint identifies places where `URI.unescape` can be replaced by
 `CGI.unescape`, `URI.decode_www_form`,
 or `URI.decode_www_form_component` depending on your specific use case.
 
@@ -3635,7 +3635,7 @@ URI.decode_www_form_component(enc_uri)
 | -
 |===
 
-This cop identifies places where `URI.regexp` is obsolete and should
+This hint identifies places where `URI.regexp` is obsolete and should
 not be used. Instead, use `URI::DEFAULT_PARSER.make_regexp`.
 
 === Examples
@@ -3661,13 +3661,13 @@ URI::DEFAULT_PARSER.make_regexp('http://example.com')
 | 0.83
 |===
 
-This cop checks for redundant access modifiers, including those with no
+This hint checks for redundant access modifiers, including those with no
 code, those which are repeated, and leading `public` modifiers in a
 class or module body. Conditionally-defined methods are considered as
 always being defined, and thus access modifiers guarding such methods
 are not redundant.
 
-This cop has `ContextCreatingMethods` option. The default setting value
+This hint has `ContextCreatingMethods` option. The default setting value
 is an empty array that means no method is specified.
 This setting is an array of methods which, when called, are known to
 create its own context in the module's current access context.
@@ -3821,13 +3821,13 @@ end
 | -
 |===
 
-This cop checks for every useless assignment to local variable in every
+This hint checks for every useless assignment to local variable in every
 scope.
-The basic idea for this cop was from the warning of `ruby -cw`:
+The basic idea for this hint was from the warning of `ruby -cw`:
 
   assigned but unused variable - foo
 
-Currently this cop has advanced logic that detects unreferenced
+Currently this hint has advanced logic that detects unreferenced
 reassignments and properly handles varied cases such as branch, loop,
 rescue, ensure, etc.
 
@@ -3869,7 +3869,7 @@ end
 | -
 |===
 
-This cop checks for comparison of something with itself.
+This hint checks for comparison of something with itself.
 
 === Examples
 
@@ -3892,10 +3892,10 @@ x.top >= x.top
 | -
 |===
 
-This cop checks for useless `else` in `begin..end` without `rescue`.
+This hint checks for useless `else` in `begin..end` without `rescue`.
 
 NOTE: This syntax is no longer valid on Ruby 2.6 or higher and
-this cop is going to be removed at some point the future.
+this hint is going to be removed at some point the future.
 
 === Examples
 
@@ -3935,12 +3935,12 @@ end
 | 0.80
 |===
 
-This cop checks for setter call to local variable as the final
+This hint checks for setter call to local variable as the final
 expression of a function definition.
 
 NOTE: There are edge cases in which the local variable references a
 value that is also accessible outside the local scope. This is not
-detected by the cop, and it can yield a false positive.
+detected by the hint, and it can yield a false positive.
 
 === Examples
 
@@ -3977,7 +3977,7 @@ end
 | -
 |===
 
-This cop checks for operators, variables, literals, and nonmutating
+This hint checks for operators, variables, literals, and nonmutating
 methods used in void context.
 
 === Examples

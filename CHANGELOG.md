@@ -16,6 +16,7 @@
 * [#8124](https://github.com/rubocop-hq/rubocop/issues/8124): Fix a false positive for `Lint/FormatParameterMismatch` when using named parameters with escaped `%`. ([@koic][])
 * [#7979](https://github.com/rubocop-hq/rubocop/issues/7979): Fix "uninitialized constant DidYouMean::SpellChecker" exception. ([@bquorning][])
 * [#8098](https://github.com/rubocop-hq/rubocop/issues/8098): Fix a false positive for `Style/RedundantRegexpCharacterClass` when using interpolations. ([@owst][])
+* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the cops documentation to use hints, flags, and categories. ([@jdruby]())
 
 ## 0.85.1 (2020-06-07)
 
