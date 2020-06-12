@@ -230,12 +230,12 @@ $ rbhint -h
 | Displays the current version plus the version of Parser and Ruby.
 |===
 
-Default command-line options are loaded from `.rubocop.yml` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rbhint`.
+Default command-line options are loaded from `.rubocop` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rbhint`.
 Thus, the options have the following order of precedence (from highest to lowest):
 
 . Explicit command-line options
 . Options from `RUBOCOP_OPTS` environment variable
-. Options from `.rubocop.yml` file.
+. Options from `.rubocop` file.
 
 == Exit codes
 
