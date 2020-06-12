@@ -1,8 +1,8 @@
-image:https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png[RuboCop Logo]
+= RuboCop
 
 [,Officer Alex J. Murphy / RoboCop]
 ____
-Role models are important. +
+Role models are important.
 ____
 
 == Overview
