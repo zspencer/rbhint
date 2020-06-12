@@ -1,6 +1,6 @@
 = Basic Usage
 
-RuboCop has three primary uses:
+RbHint has three primary uses:
 
 . Code style checker (a.k.a. linter)
 . A replacement for `ruby -w` (a subset of its linting capabilities)
@@ -10,22 +10,22 @@ In the next sections we'll briefly cover all of them.
 
 == 1. Code style checker
 
-Running `rubocop` with no arguments will check all Ruby source files
+Running `rbhint` with no arguments will check all Ruby source files
 in the current directory:
 
 [source,sh]
 ----
-$ rubocop
+$ rbhint
 ----
 
-Alternatively you can pass `rubocop` a list of files and directories to check:
+Alternatively you can pass `rbhint` a list of files and directories to check:
 
 [source,sh]
 ----
-$ rubocop app spec lib/something.rb
+$ rbhint app spec lib/something.rb
 ----
 
-Here's RuboCop in action. Consider the following Ruby source code:
+Here's RbHint in action. Consider the following Ruby source code:
 
 [source,ruby]
 ----
@@ -36,7 +36,7 @@ def badName
 end
 ----
 
-Running RuboCop on it (assuming it's in a file named `test.rb`) would produce the following report:
+Running RbHint on it (assuming it's in a file named `test.rb`) would produce the following report:
 
 ----
 Inspecting 1 file
@@ -65,46 +65,46 @@ test.rb:4:5: W: Layout/EndAlignment: end at 4, 4 is not aligned with if at 2, 2.
 
 === Auto-correcting offenses
 
-You can also run RuboCop in an auto-correct mode, where it will try to
+You can also run RbHint in an auto-correct mode, where it will try to
 automatically fix the problems it found in your code:
 
 [source,sh]
 ----
-$ rubocop -a
+$ rbhint -a
 ----
 
 See xref:usage/auto_correct.adoc[Auto-correct].
 
-=== Changing what RuboCop considers to be offenses
+=== Changing what RbHint considers to be offenses
 
-RuboCop comes with a preconfigured set of rules for each of its cops, based on the https://rubystyle.guide[Ruby Style Guide].
-Depending on your project, you may wish to reconfigure a cop, tell to ignore certain files, or disable it altogether.
+RbHint comes with a preconfigured set of rules for each of its hints, based on the https://rubystyle.guide[Ruby Style Guide].
+Depending on your project, you may wish to reconfigure a hint, tell to ignore certain files, or disable it altogether.
 
-The most common way to change RuboCop's behaviour is to create a configuration file named `.rubocop.yml` in the
+The most common way to change RbHint's behaviour is to create a configuration file named `.rubocop.yml` in the
 project's root directory.
 
 For more information, see xref:configuration.adoc[Configuration].
 
-== 2. RuboCop as a replacement for `ruby -w`
+== 2. RbHint as a replacement for `ruby -w`
 
-RuboCop natively implements almost all `ruby -w` lint warning checks, and then some. If you want you can use RuboCop
+RbHint natively implements almost all `ruby -w` lint warning checks, and then some. If you want you can use RbHint
 simply as a replacement for `ruby -w`:
 
 [source,sh]
 ----
-$ rubocop -l
+$ rbhint -l
 ----
 
-== 3. RuboCop as a formatter
+== 3. RbHint as a formatter
 
 There's a handy shortcut to run auto-correction only on code layout (a.k.a. formatting) offenses:
 
 [source,sh]
 ----
-$ rubocop -x
+$ rbhint -x
 ----
 
-This option was introduced in RuboCop 0.57.0.
+This option was introduced in RbHint 0.57.0.
 
 == Command-line flags
 
@@ -112,7 +112,7 @@ For more details check the available command-line options:
 
 [source,sh]
 ----
-$ rubocop -h
+$ rbhint -h
 ----
 
 |===
@@ -136,23 +136,23 @@ $ rubocop -h
 | `-d/--debug`
 | Displays some extra debug output.
 
-| `--disable-pending-cops`
-| Run without pending cops.
+| `   --disable-pending-cops`
+| Run without pending hints.
 
 | `--disable-uncorrectable`
 | Used with --auto-correct to annotate any offenses that do not support autocorrect with `rubocop:todo` comments.
 
 | `-D/--[no-]display-cop-names`
-| Displays cop names in offense messages. Default is true.
+| Displays hint names in offense messages. Default is true.
 
 | `--display-only-fail-level-offenses`
 | Only output offense messages at the specified `--fail-level` or above
 
-| `--enable-pending-cops`
-| Run with pending cops.
+| `   --enable-pending-cops`
+| Run with pending hints.
 
-| `--except`
-| Run all cops enabled by configuration except the specified cop(s) and/or departments.
+| `   --except`
+| Run all hints enabled by configuration except the specified hint(s) and/or departments.
 
 | `--exclude-limit`
 | Limit how many individual files `--auto-gen-config` can list in `Exclude` parameters, default is 15.
@@ -178,17 +178,17 @@ $ rubocop -h
 | `-h/--help`
 | Print usage information.
 
-| `--ignore-parent-exclusion`
-| Ignores all Exclude: settings from all .rubocop.yml files present in parent folders. This is useful when you are importing submodules when you want to test them without being affected by the parent module's rubocop settings.
+| `   --ignore-parent-exclusion`
+| Ignores all Exclude: settings from all .rubocop.yml files present in parent folders. This is useful when you are importing submodules when you want to test them without being affected by the parent module's RbHint settings.
 
 | `--init`
 | Generate a .rubocop.yml file in the current directory.
 
 | `-l/--lint`
-| Run only lint cops.
+| Run only lint hints.
 
 | `-L/--list-target-files`
-| List all files RuboCop will inspect.
+| List all files RbHint will inspect.
 
 | `--no-auto-gen-timestamp`
 | Don't include the date and time when --auto-gen-config was run in the config file it generates
@@ -196,8 +196,8 @@ $ rubocop -h
 | `--no-offense-counts`
 | Don't show offense counts in config file generated by --auto-gen-config
 
-| `--only`
-| Run only the specified cop(s) and/or cops in the specified departments.
+| `   --only`
+| Run only the specified hint(s) and/or hints in the specified departments.
 
 | `-o/--out`
 | Write output to a file instead of STDOUT.
@@ -208,17 +208,17 @@ $ rubocop -h
 | `-r/--require`
 | Require Ruby file (see link:extensions.md#loading-extensions[Loading Extensions]).
 
-| `--safe`
-| Run only safe cops.
+| `   --safe`
+| Run only safe hints.
 
-| `--safe-auto-correct`
-| Omit cops annotated as "not safe". See xref:auto_correct.adoc[Auto-correct].
+| `   --safe-auto-correct`
+| Omit hints annotated as "not safe". See xref:auto_correct.adoc[Auto-correct].
 
-| `--show-cops`
-| Shows available cops and their configuration.
+| `   --show-cops`
+| Shows available hints and their configuration.
 
 | `-s/--stdin`
-| Pipe source from STDIN. This is useful for editor integration. Takes one argument, a path, relative to the root of the project. RuboCop will use this path to determine which cops are enabled (via eg. Include/Exclude), and so that certain cops like Naming/FileName can be checked.
+| Pipe source from STDIN. This is useful for editor integration. Takes one argument, a path, relative to the root of the project. RbHint will use this path to determine which hints are enabled (via eg. Include/Exclude), and so that certain hints like Naming/FileName can be checked.
 
 | `-x/--fix-layout`
 | Auto-correct only code layout (formatting) offenses.
@@ -230,7 +230,7 @@ $ rubocop -h
 | Displays the current version plus the version of Parser and Ruby.
 |===
 
-Default command-line options are loaded from `.rubocop` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rubocop`.
+Default command-line options are loaded from `.rubocop` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rbhint`.
 Thus, the options have the following order of precedence (from highest to lowest):
 
 . Explicit command-line options
@@ -239,12 +239,12 @@ Thus, the options have the following order of precedence (from highest to lowest
 
 == Exit codes
 
-RuboCop exits with the following status codes:
+RbHint exits with the following status codes:
 
 * `0` if no offenses are found or if the severity of all offenses are less than
 `--fail-level`. (By default, if you use `--auto-correct`, offenses which are
-auto-corrected do not cause RuboCop to fail.)
+auto-corrected do not cause RbHint to fail.)
 * `1` if one or more offenses equal or greater to `--fail-level` are found. (By
 default, this is any offense which is not auto-corrected.)
-* `2` if RuboCop terminates abnormally due to invalid configuration, invalid CLI
+* `2` if RbHint terminates abnormally due to invalid configuration, invalid CLI
 options, or an internal error.
