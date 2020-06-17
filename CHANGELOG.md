@@ -11,9 +11,9 @@
 
 ### Bug fixes
 
-* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Metrics/AbcSize` text from `cop` to `hint`. ([@jdruby]())
+* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Metrics/AbcSize` text from `cop` to `hint`. ([@jdruby][])
 * [#8132](https://github.com/rubocop-hq/rubocop/issues/8132): Fix the problem with `Naming/MethodName: EnforcedStyle: camelCase` and `_` or `i` variables. ([@avrusanov][])
-* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the Basic Usage documentation to RbHint from Rubocop. ([@jdruby]())
+* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the Basic Usage documentation to RbHint from Rubocop. ([@jdruby][])
 * [#8115](https://github.com/rubocop-hq/rubocop/issues/8115): Fix false negative for `Lint::FormatParameterMismatch` when argument contains formatting. ([@andrykonchin][])
 * [#8131](https://github.com/rubocop-hq/rubocop/pull/8131): Fix false positive for `Style/RedundantRegexpEscape` with escaped delimiters. ([@owst][])
 * [#8124](https://github.com/rubocop-hq/rubocop/issues/8124): Fix a false positive for `Lint/FormatParameterMismatch` when using named parameters with escaped `%`. ([@koic][])
@@ -28,7 +28,7 @@
 ## 0.85.1 (2020-06-07)
 
 ### Bug fixes
-* [#2](https://github.com/zspencer/rbhint/issues/2): Rename the command line program to `rbhint`
+* [#2](https://github.com/zspencer/rbhint/issues/2): Rename the command line program to `rbhint`. ([@zspencer][])
 * [#8083](https://github.com/rubocop-hq/rubocop/issues/8083): Fix an error for `Lint/MixedRegexpCaptureTypes` cop when using a regular expression that cannot be processed by regexp_parser gem. ([@koic][])
 * [#8081](https://github.com/rubocop-hq/rubocop/issues/8081): Fix a false positive for `Lint/SuppressedException` when empty rescue block in `do` block. ([@koic][])
 * [#8096](https://github.com/rubocop-hq/rubocop/issues/8096): Fix a false positive for `Lint/SuppressedException` when empty rescue block in defs. ([@koic][])
@@ -4601,3 +4601,4 @@
 [@avrusanov]: https://github.com/avrusanov
 [@mauro-oto]: https://github.com/mauro-oto
 [@jdruby]: https://github.com/jdruby
+[@zspencer]: https://github.com/zspencer
