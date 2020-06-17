@@ -46,7 +46,7 @@ RSpec.describe RuboCop::Formatter::HTMLFormatter, :isolated_environment do
     html = File.read(expected_html_path, encoding: Encoding::UTF_8)
     # Avoid failure on version bump
     html.sub(/(class="version".{0,20})\d+(?:\.\d+){2}/i) do
-      Regexp.last_match(1) + RuboCop::Version::STRING
+      Regexp.last_match(1) + RbHint::Version::STRING
     end
   end
 
