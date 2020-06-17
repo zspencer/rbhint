@@ -5,7 +5,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
 
   subject(:cli) { described_class.new }
 
-  let(:rubocop) { "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rubocop" }
+  let(:rubocop) { "#{RuboCop::ConfigLoader::RUBOCOP_HOME}/exe/rbhint" }
 
   before do
     RuboCop::ConfigLoader.default_configuration = nil
