@@ -11,6 +11,7 @@
 
 ### Bug fixes
 
+* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Layout/BlockAlignment` text from `cop` to `hint`. ([@jdruby][])
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Metrics/AbcSize` text from `cop` to `hint`. ([@jdruby][])
 * [#8132](https://github.com/rubocop-hq/rubocop/issues/8132): Fix the problem with `Naming/MethodName: EnforcedStyle: camelCase` and `_` or `i` variables. ([@avrusanov][])
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the Basic Usage documentation to RbHint from Rubocop. ([@jdruby][])
