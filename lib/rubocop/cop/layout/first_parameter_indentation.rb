@@ -3,9 +3,9 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of the first parameter in a method
+      # This hint checks the indentation of the first parameter in a method
       # definition. Parameters after the first one are checked by
-      # Layout/ParameterAlignment, not by this cop.
+      # Layout/ParameterAlignment, not by this hint.
       #
       # For indenting the first argument of method _calls_, check out
       # Layout/FirstArgumentIndentation, which supports options related to

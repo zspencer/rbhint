@@ -3,9 +3,9 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of the first key in a hash literal
+      # This hint checks the indentation of the first key in a hash literal
       # where the opening brace and the first key are on separate lines. The
-      # other keys' indentations are handled by the HashAlignment cop.
+      # other keys' indentations are handled by the HashAlignment hint.
       #
       # By default, Hash literals that are arguments in a method call with
       # parentheses, and where the opening curly brace of the hash is on the

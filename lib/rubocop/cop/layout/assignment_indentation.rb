@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of the first line of the
+      # This hint checks the indentation of the first line of the
       # right-hand-side of a multi-line assignment.
       #
       # @example
@@ -20,7 +20,7 @@ module RuboCop
       #     end
       #
       # The indentation of the remaining lines can be corrected with
-      # other cops such as `IndentationConsistency` and `EndAlignment`.
+      # other hints such as `IndentationConsistency` and `EndAlignment`.
       class AssignmentIndentation < Cop
         include CheckAssignment
         include Alignment

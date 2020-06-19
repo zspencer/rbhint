@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop enforces empty line after guard clause
+      # This hint checks for an empty line after a guard clause.
       #
       # @example
       #

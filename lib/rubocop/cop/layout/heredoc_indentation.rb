@@ -3,12 +3,12 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of the here document bodies. The bodies
+      # This hint checks the indentation of the here document bodies. The bodies
       # are indented one step.
       #
       # Note: When ``Layout/LineLength``'s `AllowHeredoc` is false (not default),
-      #       this cop does not add any offenses for long here documents to
-      #       avoid `Layout/LineLength`'s offenses.
+      #       this hint does not add any flags for long here documents to
+      #       avoid `Layout/LineLength`'s flags.
       #
       # @example
       #   # bad

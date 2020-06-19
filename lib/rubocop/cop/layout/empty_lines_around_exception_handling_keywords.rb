@@ -3,8 +3,8 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks if empty lines exist around the bodies of `begin`
-      # sections. This cop doesn't check empty lines at `begin` body
+      # This hint checks if empty lines exist around the bodies of `begin`
+      # sections. This hint doesn't check empty lines at `begin` body
       # beginning/end and around method definition body.
       # `Style/EmptyLinesAroundBeginBody` or `Style/EmptyLinesAroundMethodBody`
       # can be used for this purpose.
