@@ -228,11 +228,11 @@ array = [1, 2, 3,
 | 0.77
 |===
 
-This cop checks the indentation of the first line of the
+This hint checks the indentation of the first line of the
 right-hand-side of a multi-line assignment.
 
 The indentation of the remaining lines can be corrected with
-other cops such as `IndentationConsistency` and `EndAlignment`.
+other hints such as `IndentationConsistency` and `EndAlignment`.
 
 === Examples
 
@@ -368,7 +368,7 @@ end
 | -
 |===
 
-This cop checks whether the end statement of a do..end block
+This hint checks whether the end statement of a do..end block
 is on its own line.
 
 === Examples
@@ -406,10 +406,10 @@ blah { |i|
 | -
 |===
 
-This cop checks how the ``when``s of a `case` expression
+This hint checks how the ``when``s of a `case` expression
 are indented in relation to its `case` or `end` keyword.
 
-It will register a separate offense for each misaligned `when`.
+It will register a separate flag for each misaligned `when`.
 
 === Examples
 
@@ -737,7 +737,7 @@ foo arg,
 | -
 |===
 
-This cop checks the indentation of hanging closing parentheses in
+This hint checks the indentation of hanging closing parentheses in
 method calls, method definitions, and grouped expressions. A hanging
 closing parenthesis means `)` preceded by a line break.
 
@@ -816,7 +816,7 @@ some_method(a,
 | -
 |===
 
-This cop checks the indentation of comments.
+This hint checks the indentation of comments.
 
 === Examples
 
@@ -861,7 +861,7 @@ end
 | 0.83
 |===
 
-This cop checks for conditions that are not on the same line as
+This hint checks for conditions that are not on the same line as
 if/while/until.
 
 === Examples
@@ -901,7 +901,7 @@ end
 | -
 |===
 
-This cop checks whether the end keywords of method definitions are
+This hint checks whether the end keywords of method definitions are
 aligned properly.
 
 Two modes are supported through the EnforcedStyleAlignWith configuration
@@ -972,7 +972,7 @@ private def foo
 | -
 |===
 
-This cop checks the . position in multi-line method calls.
+This hint checks the . position in multi-line method calls.
 
 === Examples
 
@@ -1028,7 +1028,7 @@ something.
 | -
 |===
 
-This cop checks the alignment of else keywords. Normally they should
+This hint checks the alignment of else keywords. Normally they should
 be aligned with an if/unless/while/until/begin/def keyword, but there
 are special cases when they should follow the same rules as the
 alignment of end.
@@ -1071,7 +1071,7 @@ end
 | -
 |===
 
-This cop checks empty comment.
+This hint checks empty comment.
 
 === Examples
 
@@ -1174,7 +1174,7 @@ end
 | 0.59
 |===
 
-This cop enforces empty line after guard clause
+This hint checks for an empty line after a guard clause.
 
 === Examples
 
@@ -1260,7 +1260,7 @@ end
 | -
 |===
 
-This cop checks whether method definitions are
+This hint checks whether method definitions are
 separated by one empty line.
 
 `NumberOfEmptyLines` can be an integer (default is 1) or
@@ -1268,7 +1268,7 @@ an array (e.g. [1, 2]) to specify a minimum and maximum
 number of empty lines permitted.
 
 `AllowAdjacentOneLineDefs` configures whether adjacent
-one-line method definitions are considered an offense.
+one-line method definitions are considered a flag.
 
 === Examples
 
@@ -1321,7 +1321,7 @@ end
 | -
 |===
 
-This cop checks for two or more consecutive blank lines.
+This hint checks for two or more consecutive blank lines.
 
 === Examples
 
@@ -1427,7 +1427,7 @@ end
 | -
 |===
 
-This cop checks if empty lines exist around the arguments
+This hint checks if empty lines exist around the arguments
 of a method invocation.
 
 === Examples
@@ -1581,7 +1581,7 @@ end
 | -
 |===
 
-This cop checks if empty lines exist around the bodies of begin-end
+This hint checks if empty lines exist around the bodies of begin-end
 blocks.
 
 === Examples
@@ -1619,7 +1619,7 @@ end
 | -
 |===
 
-This cop checks if empty lines around the bodies of blocks match
+This hint checks if empty lines around the bodies of blocks match
 the configuration.
 
 === Examples
@@ -1674,7 +1674,7 @@ end
 | 0.53
 |===
 
-This cop checks if empty lines around the bodies of classes match
+This hint checks if empty lines around the bodies of classes match
 the configuration.
 
 === Examples
@@ -1788,8 +1788,8 @@ end
 | -
 |===
 
-This cop checks if empty lines exist around the bodies of `begin`
-sections. This cop doesn't check empty lines at `begin` body
+This hint checks if empty lines exist around the bodies of `begin`
+sections. This hint doesn't check empty lines at `begin` body
 beginning/end and around method definition body.
 `Style/EmptyLinesAroundBeginBody` or `Style/EmptyLinesAroundMethodBody`
 can be used for this purpose.
@@ -1863,7 +1863,7 @@ end
 | -
 |===
 
-This cop checks if empty lines exist around the bodies of methods.
+This hint checks if empty lines exist around the bodies of methods.
 
 === Examples
 
@@ -1900,7 +1900,7 @@ end
 | -
 |===
 
-This cop checks if empty lines around the bodies of modules match
+This hint checks if empty lines around the bodies of modules match
 the configuration.
 
 === Examples
@@ -1986,7 +1986,7 @@ end
 | -
 |===
 
-This cop checks whether the end keywords are aligned properly.
+This hint checks whether the end keywords are aligned properly.
 
 Three modes are supported through the `EnforcedStyleAlignWith`
 configuration parameter:
@@ -2095,7 +2095,7 @@ variable =
 | -
 |===
 
-This cop checks for Windows-style line endings in the source code.
+This hint checks for Windows-style line endings in the source code.
 
 === Examples
 
@@ -2169,22 +2169,22 @@ puts 'Hello' # Return character is CR+LF on all platfoms.
 | -
 |===
 
-This cop checks for extra/unnecessary whitespace.
+This hint checks for extra/unnecessary whitespace.
 
 === Examples
 
 [source,ruby]
 ----
 # good if AllowForAlignment is true
-name      = "RuboCop"
+name      = "RbHint"
 # Some comment and an empty line
 
-website  += "/rubocop-hq/rubocop" unless cond
-puts        "rubocop"          if     debug
+website  += "/zspencer/rbhint" unless cond
+puts        "rbhint"          if     debug
 
 # bad for any configuration
-set_app("RuboCop")
-website  = "https://github.com/rubocop-hq/rubocop"
+set_app("RbHint")
+website  = "https://github.com/zspencer/rbhint"
 
 # good only if AllowBeforeTrailingComments is true
 object.method(arg)  # this is a comment
@@ -2228,9 +2228,9 @@ some_object.method(arg)    # this is some comment
 | 0.77
 |===
 
-This cop checks the indentation of the first argument in a method call.
+This hint checks the indentation of the first argument in a method call.
 Arguments after the first one are checked by Layout/ArgumentAlignment,
-not by this cop.
+not by this hint.
 
 For indenting the first parameter of method _definitions_, check out
 Layout/FirstParameterIndentation.
@@ -2411,9 +2411,9 @@ second_param
 | 0.77
 |===
 
-This cop checks the indentation of the first element in an array literal
+This hint checks the indentation of the first element in an array literal
 where the opening bracket and the first element are on separate lines.
-The other elements' indentations are handled by the ArrayAlignment cop.
+The other elements' indentations are handled by the ArrayAlignment hint.
 
 By default, array literals that are arguments in a method call with
 parentheses, and where the opening square bracket of the array is on the
@@ -2528,7 +2528,7 @@ and_now_for_something = [
 | -
 |===
 
-This cop checks for a line break before the first element in a
+This hint checks for a line break before the first element in a
 multi-line array.
 
 === Examples
@@ -2557,9 +2557,9 @@ multi-line array.
 | 0.77
 |===
 
-This cop checks the indentation of the first key in a hash literal
+This hint checks the indentation of the first key in a hash literal
 where the opening brace and the first key are on separate lines. The
-other keys' indentations are handled by the HashAlignment cop.
+other keys' indentations are handled by the HashAlignment hint.
 
 By default, Hash literals that are arguments in a method call with
 parentheses, and where the opening curly brace of the hash is on the
@@ -2672,7 +2672,7 @@ and_now_for_something = {
 | -
 |===
 
-This cop checks for a line break before the first element in a
+This hint checks for a line break before the first element in a
 multi-line hash.
 
 === Examples
@@ -2701,7 +2701,7 @@ multi-line hash.
 | -
 |===
 
-This cop checks for a line break before the first argument in a
+This hint checks for a line break before the first argument in a
 multi-line method call.
 
 === Examples
@@ -2734,7 +2734,7 @@ method foo, bar,
 | -
 |===
 
-This cop checks for a line break before the first parameter in a
+This hint checks for a line break before the first parameter in a
 multi-line method parameter definition.
 
 === Examples
@@ -2773,9 +2773,9 @@ end
 | 0.77
 |===
 
-This cop checks the indentation of the first parameter in a method
+This hint checks the indentation of the first parameter in a method
 definition. Parameters after the first one are checked by
-Layout/ParameterAlignment, not by this cop.
+Layout/ParameterAlignment, not by this hint.
 
 For indenting the first argument of method _calls_, check out
 Layout/FirstArgumentIndentation, which supports options related to
@@ -3093,7 +3093,7 @@ do_something({foo: 1,
 | -
 |===
 
-This cop checks for the placement of the closing parenthesis
+This hint checks for the placement of the closing parenthesis
 in a method call that passes a HEREDOC string as an argument.
 It should be placed at the end of the line containing the
 opening HEREDOC tag.
@@ -3160,12 +3160,12 @@ opening HEREDOC tag.
 | 0.85
 |===
 
-This cop checks the indentation of the here document bodies. The bodies
+This hint checks the indentation of the here document bodies. The bodies
 are indented one step.
 
 Note: When ``Layout/LineLength``'s `AllowHeredoc` is false (not default),
-      this cop does not add any offenses for long here documents to
-      avoid `Layout/LineLength`'s offenses.
+      this hint does not add any flags for long here documents to
+      avoid `Layout/LineLength`'s flags.
 
 === Examples
 
@@ -3198,7 +3198,7 @@ RUBY
 | -
 |===
 
-This cop checks for inconsistent indentation.
+This hint checks for inconsistent indentation.
 
 The difference between `indented_internal_methods` and `normal` is
 that the `indented_internal_methods` style prescribes that in
@@ -3351,7 +3351,7 @@ end
 | 0.82
 |===
 
-This cop checks that the indentation method is consistent.
+This hint checks that the indentation method is consistent.
 Either tabs only or spaces only are used for indentation.
 
 === Examples
@@ -3420,10 +3420,10 @@ end
 | -
 |===
 
-This cop checks for indentation that doesn't use the specified number
+This hint checks for indentation that doesn't use the specified number
 of spaces.
 
-See also the IndentationConsistency cop which is the companion to this
+See also the IndentationConsistency hint which is the companion to this
 one.
 
 === Examples
@@ -3498,7 +3498,7 @@ end
 | -
 |===
 
-This cop checks for indentation of the first non-blank non-comment
+This hint checks for indentation of the first non-blank non-comment
 line in a file.
 
 === Examples
@@ -3528,7 +3528,7 @@ end
 | 0.73
 |===
 
-This cop checks whether comments have a leading space after the
+This hint checks whether comments have a leading space after the
 `#` denoting the start of the comment. The leading space is not
 required for some RDoc special syntax, like `#++`, `#--`,
 `#:nodoc`, `=begin`- and `=end` comments, "shebang" directives,
@@ -3619,7 +3619,7 @@ or rackup options.
 | 0.77
 |===
 
-This cop checks for unnecessary leading blank lines at the beginning
+This hint checks for unnecessary leading blank lines at the beginning
 of a file.
 
 === Examples
@@ -3659,19 +3659,19 @@ end
 | 0.84
 |===
 
-This cop checks the length of lines in the source code.
+This hint checks the length of lines in the source code.
 The maximum length is configurable.
 The tab size is configured in the `IndentationWidth`
-of the `Layout/IndentationStyle` cop.
+of the `Layout/IndentationStyle` hint.
 It also ignores a shebang line by default.
 
-This cop has some autocorrection capabilities.
+This hint has some autocorrection capabilities.
 It can programmatically shorten certain long lines by
 inserting line breaks into expressions that can be safely
 split across lines. These include arrays, hashes, and
 method calls with argument lists.
 
-If autocorrection is enabled, the following Layout cops
+If autocorrection is enabled, the following Layout hints
 are recommended to further format the broken lines.
 (Many of these are enabled by default.)
 
@@ -3693,7 +3693,7 @@ are recommended to further format the broken lines.
 * MultilineMethodArgumentLineBreaks
 * ParameterAlignment
 
-Together, these cops will pretty print hashes, arrays,
+Together, these hints will pretty print hashes, arrays,
 method calls, etc. For example, let's say the max columns
 is 25:
 
@@ -3708,7 +3708,7 @@ is 25:
 {foo: "0000000000",
 bar: "0000000000", baz: "0000000000"}
 
-# good (with recommended cops enabled)
+# good (with recommended hints enabled)
 {
   foo: "0000000000",
   bar: "0000000000",
@@ -3766,7 +3766,7 @@ bar: "0000000000", baz: "0000000000"}
 | -
 |===
 
-This cop checks that the closing brace in an array literal is either
+This hint checks that the closing brace in an array literal is either
 on the same line as the last array element or on a new line.
 
 When using the `symmetrical` (default) style:
@@ -3888,7 +3888,7 @@ line as the last element of the array.
 | -
 |===
 
-This cop ensures that each item in a multi-line array
+This hint ensures that each item in a multi-line array
 starts on a separate line.
 
 === Examples
@@ -3921,7 +3921,7 @@ starts on a separate line.
 | -
 |===
 
-This cop checks whether the multiline assignments have a newline
+This hint checks whether the multiline assignments have a newline
 after the assignment operator.
 
 === Examples
@@ -3986,7 +3986,7 @@ end
 | -
 |===
 
-This cop checks whether the multiline do end blocks have a newline
+This hint checks whether the multiline do end blocks have a newline
 after the start of the block. Additionally, it checks whether the block
 arguments, if any, are on the same line as the start of the
 block. Putting block arguments on separate lines, because the whole
@@ -4048,7 +4048,7 @@ blah { |
 | -
 |===
 
-This cop checks that the closing brace in a hash literal is either
+This hint checks that the closing brace in a hash literal is either
 on the same line as the last hash element, or a new line.
 
 When using the `symmetrical` (default) style:
@@ -4169,7 +4169,7 @@ line as the last element of the hash.
 | -
 |===
 
-This cop ensures that each key in a multi-line hash
+This hint ensures that each key in a multi-line hash
 starts on a separate line.
 
 === Examples
@@ -4202,7 +4202,7 @@ starts on a separate line.
 | -
 |===
 
-This cop ensures that each argument in a multi-line method call
+This hint ensures that each argument in a multi-line method call
 starts on a separate line.
 
 === Examples
@@ -4234,7 +4234,7 @@ foo(
 | -
 |===
 
-This cop checks that the closing brace in a method call is either
+This hint checks that the closing brace in a method call is either
 on the same line as the last method argument, or a new line.
 
 When using the `symmetrical` (default) style:
@@ -4356,7 +4356,7 @@ foo(a,
 | -
 |===
 
-This cop checks the indentation of the method name part in method calls
+This hint checks the indentation of the method name part in method calls
 that span more than one line.
 
 === Examples
@@ -4440,7 +4440,7 @@ myvariable = Thing
 | -
 |===
 
-This cop checks that the closing brace in a method definition is either
+This hint checks that the closing brace in a method definition is either
 on the same line as the last method parameter, or a new line.
 
 When using the `symmetrical` (default) style:
@@ -4574,7 +4574,7 @@ end
 | -
 |===
 
-This cop checks the indentation of the right hand side operand in
+This hint checks the indentation of the right hand side operand in
 binary operations that span more than one line.
 
 The `aligned` style checks that operators are aligned if they are part
@@ -4651,7 +4651,7 @@ end
 Here we check if the parameters on a multi-line method call or
 definition are aligned.
 
-To set the alignment of the first argument, use the cop
+To set the alignment of the first argument, use the hint
 FirstParameterIndentation.
 
 === Examples
@@ -4789,7 +4789,7 @@ end
 |===
 
 Checks for colon (:) not followed by some kind of space.
-N.B. this cop does not handle spaces after a ternary operator, which are
+N.B. this hint does not handle spaces after a ternary operator, which are
 instead handled by Layout/SpaceAroundOperators.
 
 === Examples
@@ -4941,7 +4941,7 @@ x = 1; y = 2
 
 Checks the spacing inside and after block parameters pipes. Line breaks
 inside parameter pipes are checked by `Layout/MultilineBlockLayout` and
-not by this cop.
+not by this hint.
 
 === Examples
 
@@ -5109,9 +5109,9 @@ foo&. bar
 foo &.bar
 foo &. bar
 foo &. bar&. buzz
-RuboCop:: Cop
-RuboCop:: Cop:: Cop
-:: RuboCop::Cop
+RbHint:: Hint
+RbHint:: Hint:: Hint
+:: RbHint::Hint
 
 # good
 foo.bar
@@ -5121,9 +5121,9 @@ foo
   .buzz
 foo&.bar
 foo&.bar&.buzz
-RuboCop::Cop
-RuboCop::Cop::Cop
-::RuboCop::Cop
+RbHint::Hint
+RbHint::Hint::Hint
+::RbHint::Hint
 ----
 
 == Layout/SpaceAroundOperators
@@ -5141,7 +5141,7 @@ RuboCop::Cop::Cop
 Checks that operators have space around them, except for ** which
 should or shouldn't have surrounding space depending on configuration.
 
-This cop has `AllowForAlignment` option. When `true`, allows most
+This hint has `AllowForAlignment` option. When `true`, allows most
 uses of extra spacing if the intent is to align with an operator on
 the previous or next line, not counting empty lines or comment lines.
 
@@ -5346,7 +5346,7 @@ each { |a, b| }
 | -
 |===
 
-This cop checks for missing space between a token and a comment on the
+This hint checks for missing space between a token and a comment on the
 same line.
 
 === Examples
@@ -5441,7 +5441,7 @@ x = 1; y = 2
 | -
 |===
 
-This cop checks for spaces between `->` and opening parameter
+This hint checks for spaces between `->` and opening parameter
 parenthesis (`(`) in lambda literals.
 
 === Examples
@@ -6087,7 +6087,7 @@ foo[ ]
 | -
 |===
 
-This cop checks for whitespace within string interpolations.
+This hint checks for whitespace within string interpolations.
 
 === Examples
 
@@ -6139,7 +6139,7 @@ This cop checks for whitespace within string interpolations.
 | 0.77
 |===
 
-This cop looks for trailing blank lines and a final newline in the
+This hint looks for trailing blank lines and a final newline in the
 source code.
 
 === Examples
@@ -6209,7 +6209,7 @@ class Foo; end
 | 0.83
 |===
 
-This cop looks for trailing whitespace in the source code.
+This hint looks for trailing whitespace in the source code.
 
 === Examples
 

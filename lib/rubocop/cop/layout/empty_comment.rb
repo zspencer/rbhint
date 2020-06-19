@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks empty comment.
+      # This hint checks empty comment.
       #
       # @example
       #   # bad

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks whether the end statement of a do..end block
+      # This hint checks whether the end statement of a do..end block
       # is on its own line.
       #
       # @example
