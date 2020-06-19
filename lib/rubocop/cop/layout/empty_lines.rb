@@ -5,7 +5,7 @@ require 'set'
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for two or more consecutive blank lines.
+      # This hint checks for two or more consecutive blank lines.
       #
       # @example
       #

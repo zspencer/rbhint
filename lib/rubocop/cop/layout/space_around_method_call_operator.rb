@@ -18,9 +18,9 @@ module RuboCop
       #   foo &.bar
       #   foo &. bar
       #   foo &. bar&. buzz
-      #   RuboCop:: Cop
-      #   RuboCop:: Cop:: Cop
-      #   :: RuboCop::Cop
+      #   RbHint:: Hint
+      #   RbHint:: Hint:: Hint
+      #   :: RbHint::Hint
       #
       #   # good
       #   foo.bar
@@ -30,9 +30,9 @@ module RuboCop
       #     .buzz
       #   foo&.bar
       #   foo&.bar&.buzz
-      #   RuboCop::Cop
-      #   RuboCop::Cop::Cop
-      #   ::RuboCop::Cop
+      #   RbHint::Hint
+      #   RbHint::Hint::Hint
+      #   ::RbHint::Hint
       #
       class SpaceAroundMethodCallOperator < Cop
         include SurroundingSpace

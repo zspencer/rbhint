@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop looks for trailing blank lines and a final newline in the
+      # This hint looks for trailing blank lines and a final newline in the
       # source code.
       #
       # @example EnforcedStyle: final_blank_line

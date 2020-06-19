@@ -3,10 +3,10 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for indentation that doesn't use the specified number
+      # This hint checks for indentation that doesn't use the specified number
       # of spaces.
       #
-      # See also the IndentationConsistency cop which is the companion to this
+      # See also the IndentationConsistency hint which is the companion to this
       # one.
       #
       # @example

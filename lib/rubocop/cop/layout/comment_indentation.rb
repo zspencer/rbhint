@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of comments.
+      # This hint checks the indentation of comments.
       #
       # @example
       #   # bad

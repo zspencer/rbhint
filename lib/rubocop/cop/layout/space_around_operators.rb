@@ -6,7 +6,7 @@ module RuboCop
       # Checks that operators have space around them, except for ** which
       # should or shouldn't have surrounding space depending on configuration.
       #
-      # This cop has `AllowForAlignment` option. When `true`, allows most
+      # This hint has `AllowForAlignment` option. When `true`, allows most
       # uses of extra spacing if the intent is to align with an operator on
       # the previous or next line, not counting empty lines or comment lines.
       #

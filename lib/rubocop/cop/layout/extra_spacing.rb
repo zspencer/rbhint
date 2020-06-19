@@ -5,20 +5,20 @@ require 'set'
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for extra/unnecessary whitespace.
+      # This hint checks for extra/unnecessary whitespace.
       #
       # @example
       #
       #   # good if AllowForAlignment is true
-      #   name      = "RuboCop"
+      #   name      = "RbHint"
       #   # Some comment and an empty line
       #
-      #   website  += "/rubocop-hq/rubocop" unless cond
-      #   puts        "rubocop"          if     debug
+      #   website  += "/zspencer/rbhint" unless cond
+      #   puts        "rbhint"          if     debug
       #
       #   # bad for any configuration
-      #   set_app("RuboCop")
-      #   website  = "https://github.com/rubocop-hq/rubocop"
+      #   set_app("RbHint")
+      #   website  = "https://github.com/zspencer/rbhint"
       #
       #   # good only if AllowBeforeTrailingComments is true
       #   object.method(arg)  # this is a comment

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop ensures that each item in a multi-line array
+      # This hint ensures that each item in a multi-line array
       # starts on a separate line.
       #
       # @example

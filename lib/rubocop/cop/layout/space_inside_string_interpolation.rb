@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for whitespace within string interpolations.
+      # This hint checks for whitespace within string interpolations.
       #
       # @example EnforcedStyle: no_space (default)
       #   # bad

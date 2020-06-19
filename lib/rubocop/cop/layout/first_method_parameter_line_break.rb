@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for a line break before the first parameter in a
+      # This hint checks for a line break before the first parameter in a
       # multi-line method parameter definition.
       #
       # @example

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks whether method definitions are
+      # This hint checks whether method definitions are
       # separated by one empty line.
       #
       # `NumberOfEmptyLines` can be an integer (default is 1) or
@@ -11,7 +11,7 @@ module RuboCop
       # number of empty lines permitted.
       #
       # `AllowAdjacentOneLineDefs` configures whether adjacent
-      # one-line method definitions are considered an offense.
+      # one-line method definitions are considered a flag.
       #
       # @example
       #
