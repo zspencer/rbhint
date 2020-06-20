@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop ensures that each argument in a multi-line method call
+      # This hint ensures that each argument in a multi-line method call
       # starts on a separate line.
       #
       # @example

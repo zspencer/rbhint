@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop ensures that each key in a multi-line hash
+      # This hint ensures that each key in a multi-line hash
       # starts on a separate line.
       #
       # @example

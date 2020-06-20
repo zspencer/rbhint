@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for missing space between a token and a comment on the
+      # This hint checks for missing space between a token and a comment on the
       # same line.
       #
       # @example

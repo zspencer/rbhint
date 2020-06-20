@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the indentation of the right hand side operand in
+      # This hint checks the indentation of the right hand side operand in
       # binary operations that span more than one line.
       #
       # The `aligned` style checks that operators are aligned if they are part

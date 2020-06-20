@@ -25,6 +25,7 @@
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the Basic Usage documentation to RbHint from Rubocop. ([@jdruby][])
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Metrics/AbcSize` text from `cop` to `hint`. ([@jdruby][])
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Layout/BlockAlignment` text from `cop` to `hint`. ([@jdruby][])
+* [#4](https://github.com/zspencer/rbhint/issues/4): Reframe `Layout` cops text from `cop` to `hint`. ([@jdruby][])
 * [#4](https://github.com/zspencer/rbhint/issues/4): Reframe the Configuration documentation to RbHint from Rubocop. ([@jdruby][])
 
 ## 0.85.1 (2020-06-07)

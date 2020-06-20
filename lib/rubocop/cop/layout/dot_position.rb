@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks the . position in multi-line method calls.
+      # This hint checks the . position in multi-line method calls.
       #
       # @example EnforcedStyle: leading (default)
       #   # bad

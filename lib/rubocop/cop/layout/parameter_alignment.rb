@@ -6,7 +6,7 @@ module RuboCop
       # Here we check if the parameters on a multi-line method call or
       # definition are aligned.
       #
-      # To set the alignment of the first argument, use the cop
+      # To set the alignment of the first argument, use the hint
       # FirstParameterIndentation.
       #
       # @example EnforcedStyle: with_first_parameter (default)

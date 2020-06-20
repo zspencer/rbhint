@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Layout
-      # This cop checks for indentation of the first non-blank non-comment
+      # This hint checks for indentation of the first non-blank non-comment
       # line in a file.
       #
       # @example
