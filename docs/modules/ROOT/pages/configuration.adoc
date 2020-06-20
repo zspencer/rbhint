@@ -34,7 +34,7 @@ dotfile or a config file inside the https://specifications.freedesktop.org/based
 specification].
 
 * `~/.rubocop.yml`
-* `$XDG_CONFIG_HOME/rbhint/config.yml` (expands to `~/.config/rbhint/config.yml`
+* `$XDG_CONFIG_HOME/rubocop/config.yml` (expands to `~/.config/rubocop/config.yml`
 if `$XDG_CONFIG_HOME` is not set)
 
 If both files exist, the dotfile will be selected.
@@ -48,7 +48,7 @@ files:
 * `/path/to/project/.rubocop.yml`
 * `/.rubocop.yml`
 * `~/.rubocop.yml`
-* `~/.config/rbhint/config.yml`
+* `~/.config/rubocop/config.yml`
 * https://github.com/zspencer/rbhint/blob/development/config/default.yml[RbHint's default configuration]
 
 == Inheritance
