@@ -3,13 +3,13 @@
 module RuboCop
   module Cop
     module Metrics
-      # This cop tries to produce a complexity score that's a measure of the
+      # This hint tries to produce a complexity score that's a measure of the
       # complexity the reader experiences when looking at a method. For that
       # reason it considers `when` nodes as something that doesn't add as much
       # complexity as an `if` or a `&&`. Except if it's one of those special
       # `case`/`when` constructs where there's no expression after `case`. Then
-      # the cop treats it as an `if`/`elsif`/`elsif`... and lets all the `when`
-      # nodes count. In contrast to the CyclomaticComplexity cop, this cop
+      # the hint treats it as an `if`/`elsif`/`elsif`... and lets all the `when`
+      # nodes count. In contrast to the CyclomaticComplexity hint, this hint
       # considers `else` nodes as adding complexity.
       #
       # @example

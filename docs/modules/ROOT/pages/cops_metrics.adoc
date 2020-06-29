@@ -48,10 +48,10 @@ and https://en.wikipedia.org/wiki/ABC_Software_Metric.
 | 0.66
 |===
 
-This cop checks if the length of a block exceeds some maximum value.
+This hint checks if the length of a block exceeds some maximum value.
 Comment lines can optionally be ignored.
 The maximum allowed length is configurable.
-The cop can be configured to ignore blocks passed to certain methods.
+The hint can be configured to ignore blocks passed to certain methods.
 
 === Configurable attributes
 
@@ -87,7 +87,7 @@ The cop can be configured to ignore blocks passed to certain methods.
 | 0.47
 |===
 
-This cop checks for excessive nesting of conditional and looping
+This hint checks for excessive nesting of conditional and looping
 constructs.
 
 You can configure if blocks are considered using the `CountBlocks`
@@ -126,7 +126,7 @@ The maximum level of nesting allowed is configurable.
 | -
 |===
 
-This cop checks if the length a class exceeds some maximum value.
+This hint checks if the length a class exceeds some maximum value.
 Comment lines can optionally be ignored.
 The maximum allowed length is configurable.
 
@@ -156,7 +156,7 @@ The maximum allowed length is configurable.
 | 0.81
 |===
 
-This cop checks that the cyclomatic complexity of methods is not higher
+This hint checks that the cyclomatic complexity of methods is not higher
 than the configured maximum. The cyclomatic complexity is the number of
 linearly independent paths through a method. The algorithm counts
 decision points and adds one.
@@ -209,7 +209,7 @@ Blocks that are calls to builtin iteration methods
 | 0.59.2
 |===
 
-This cop checks if the length of a method exceeds some maximum value.
+This hint checks if the length of a method exceeds some maximum value.
 Comment lines can optionally be ignored.
 The maximum allowed length is configurable.
 
@@ -247,7 +247,7 @@ The maximum allowed length is configurable.
 | -
 |===
 
-This cop checks if the length a module exceeds some maximum value.
+This hint checks if the length a module exceeds some maximum value.
 Comment lines can optionally be ignored.
 The maximum allowed length is configurable.
 
@@ -277,7 +277,7 @@ The maximum allowed length is configurable.
 | -
 |===
 
-This cop checks for methods with too many parameters.
+This hint checks for methods with too many parameters.
 The maximum number of parameters is configurable.
 Keyword arguments can optionally be excluded from the total count.
 
@@ -311,13 +311,13 @@ Keyword arguments can optionally be excluded from the total count.
 | 0.81
 |===
 
-This cop tries to produce a complexity score that's a measure of the
+This hint tries to produce a complexity score that's a measure of the
 complexity the reader experiences when looking at a method. For that
 reason it considers `when` nodes as something that doesn't add as much
 complexity as an `if` or a `&&`. Except if it's one of those special
 `case`/`when` constructs where there's no expression after `case`. Then
-the cop treats it as an `if`/`elsif`/`elsif`... and lets all the `when`
-nodes count. In contrast to the CyclomaticComplexity cop, this cop
+the hint treats it as an `if`/`elsif`/`elsif`... and lets all the `when`
+nodes count. In contrast to the CyclomaticComplexity hint, this hint
 considers `else` nodes as adding complexity.
 
 === Examples
