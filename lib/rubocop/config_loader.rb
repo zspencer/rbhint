@@ -18,21 +18,19 @@ module RuboCop
     XDG_CONFIG = 'config.yml'
     RUBOCOP_HOME = File.realpath(File.join(File.dirname(__FILE__), '..', '..'))
     DEFAULT_FILE = File.join(RUBOCOP_HOME, 'config', 'default.yml')
-    AUTO_GENERATED_FILE = '.rubocop_todo.yml'
 
     class << self
       include FileFinder
 
-      attr_accessor :debug, :auto_gen_config, :ignore_parent_exclusion,
-                    :options_config, :disable_pending_cops, :enable_pending_cops
+      attr_accessor :debug, :ignore_parent_exclusion,
+                    :disable_pending_cops, :enable_pending_cops
       attr_writer :default_configuration
 
       alias debug? debug
-      alias auto_gen_config? auto_gen_config
       alias ignore_parent_exclusion? ignore_parent_exclusion
 
       def clear_options
-        @debug = @auto_gen_config = @options_config = nil
+        @debug = nil
         FileFinder.root_level = nil
       end
 
@@ -53,6 +51,21 @@ module RuboCop
         hash.delete('inherit_from')
 
         Config.create(hash, path)
+      end
+
+      def load_yaml_configuration(absolute_path)
+        file_contents = read_file(absolute_path)
+        yaml_code = Dir.chdir(File.dirname(absolute_path)) do
+          ERB.new(file_contents).result
+        end
+        check_duplication(yaml_code, absolute_path)
+        hash = yaml_safe_load(yaml_code, absolute_path) || {}
+
+        puts "configuration from #{absolute_path}" if debug?
+
+        raise(TypeError, "Malformed configuration in #{absolute_path}") unless hash.is_a?(Hash)
+
+        hash
       end
 
       def add_missing_namespaces(path, hash)
@@ -85,7 +98,7 @@ module RuboCop
       end
 
       def configuration_from_file(config_file)
-        return ConfigLoader.default_configuration if config_file == DEFAULT_FILE
+        return default_configuration if config_file == DEFAULT_FILE
 
         config = load_file(config_file)
         if ignore_parent_exclusion?
@@ -105,15 +118,13 @@ module RuboCop
       end
 
       def add_excludes_from_files(config, config_file)
-        found_files = find_files_upwards(DOTFILE, config_file) +
-                      [find_user_dotfile, find_user_xdg_config].compact
+        exclusion_file = find_last_file_upwards(DOTFILE, config_file)
 
-        return if found_files.empty?
-        return if PathUtil.relative_path(found_files.last) ==
-                  PathUtil.relative_path(config_file)
+        return unless exclusion_file
+        return if PathUtil.relative_path(exclusion_file) == PathUtil.relative_path(config_file)
 
         print 'AllCops/Exclude ' if debug?
-        config.add_excludes_from_higher_level(load_file(found_files.last))
+        config.add_excludes_from_higher_level(load_file(exclusion_file))
       end
 
       def default_configuration
@@ -139,34 +150,9 @@ module RuboCop
         warn Rainbow('For more information: https://docs.rubocop.org/rubocop/versioning.html').yellow
       end
 
-      # Merges the given configuration with the default one. If
-      # AllCops:DisabledByDefault is true, it changes the Enabled params so
-      # that only cops from user configuration are enabled.
-      # If AllCops::EnabledByDefault is true, it changes the Enabled params
-      # so that only cops explicitly disabled in user configuration are
-      # disabled.
+      # Merges the given configuration with the default one.
       def merge_with_default(config, config_file, unset_nil: true)
         resolver.merge_with_default(config, config_file, unset_nil: unset_nil)
-      end
-
-      def add_inheritance_from_auto_generated_file
-        file_string = " #{AUTO_GENERATED_FILE}"
-
-        config_file = options_config || DOTFILE
-
-        if File.exist?(config_file)
-          files = Array(load_yaml_configuration(config_file)['inherit_from'])
-
-          return if files.include?(AUTO_GENERATED_FILE)
-
-          files.unshift(AUTO_GENERATED_FILE)
-          file_string = "\n  - " + files.join("\n  - ") if files.size > 1
-          rubocop_yml_contents = existing_configuration(config_file)
-        end
-
-        write_config_file(config_file, file_string, rubocop_yml_contents)
-
-        puts "Added inheritance from `#{AUTO_GENERATED_FILE}` in `#{DOTFILE}`."
       end
 
       private
@@ -196,36 +182,8 @@ module RuboCop
         path
       end
 
-      def existing_configuration(config_file)
-        IO.read(config_file, encoding: Encoding::UTF_8)
-          .sub(/^inherit_from: *[^\n]+/, '')
-          .sub(/^inherit_from: *(\n *- *[^\n]+)+/, '')
-      end
-
-      def write_config_file(file_name, file_string, rubocop_yml_contents)
-        File.open(file_name, 'w') do |f|
-          f.write "inherit_from:#{file_string}\n"
-          f.write "\n#{rubocop_yml_contents}" if /\S/.match?(rubocop_yml_contents)
-        end
-      end
-
       def resolver
         @resolver ||= ConfigLoaderResolver.new
-      end
-
-      def load_yaml_configuration(absolute_path)
-        file_contents = read_file(absolute_path)
-        yaml_code = Dir.chdir(File.dirname(absolute_path)) do
-          ERB.new(file_contents).result
-        end
-        check_duplication(yaml_code, absolute_path)
-        hash = yaml_safe_load(yaml_code, absolute_path) || {}
-
-        puts "configuration from #{absolute_path}" if debug?
-
-        raise(TypeError, "Malformed configuration in #{absolute_path}") unless hash.is_a?(Hash)
-
-        hash
       end
 
       def check_duplication(yaml_code, absolute_path)

@@ -95,17 +95,27 @@ module RuboCop
         end
 
         def line_break_necessary_in_args?(node)
-          needed_length = node.source_range.column +
-                          node.source.lines.first.length +
-                          block_arg_string(node, node.arguments).length +
-                          PIPE_SIZE
-          needed_length > max_line_length
+          needed_length_for_args(node) > max_line_length
+        end
+
+        def needed_length_for_args(node)
+          node.source_range.column +
+            characters_needed_for_space_and_pipes(node) +
+            node.source.lines.first.chomp.length +
+            block_arg_string(node, node.arguments).length
+        end
+
+        def characters_needed_for_space_and_pipes(node)
+          if node.source.lines.first.end_with?("|\n")
+            PIPE_SIZE
+          else
+            1 + PIPE_SIZE * 2
+          end
         end
 
         def add_offense_for_expression(node, expr, msg)
           expression = expr.source_range
           range = range_between(expression.begin_pos, expression.end_pos)
-
           add_offense(node, location: range, message: msg)
         end
 
@@ -121,7 +131,7 @@ module RuboCop
         end
 
         def autocorrect_body(corrector, node, block_body)
-          first_node = if block_body.begin_type?
+          first_node = if block_body.begin_type? && !block_body.source.start_with?('(')
                          block_body.children.first
                        else
                          block_body

@@ -507,7 +507,7 @@ instead.
 OpenSSL::Cipher::AES.new(128, :GCM)
 
 # good
-OpenSSL::Cipher.new('AES-128-GCM')
+OpenSSL::Cipher.new('aes-128-gcm')
 ----
 
 [source,ruby]
@@ -605,6 +605,39 @@ case x
 when 'first'
   do_something
 when 'second'
+  do_something_else
+end
+----
+
+== Lint/DuplicateElsifCondition
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| No
+| 0.88
+| -
+|===
+
+This cop checks that there are no repeated conditions used in if 'elsif'.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+if x == 1
+  do_something
+elsif x == 1
+  do_something_else
+end
+
+# good
+if x == 1
+  do_something
+elsif x == 2
   do_something_else
 end
 ----
@@ -1437,9 +1470,9 @@ C = Class.new(StandardError)
 
 | Enabled
 | Yes
-| No
+| Yes (Unsafe)
 | 0.50
-| -
+| 0.87
 |===
 
 This cop checks for interpolation in a single quoted string.
@@ -2138,10 +2171,10 @@ rather than meant to be part of the resulting symbols.
 | Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 
 | Pending
-| Yes
 | No
+| Yes (Unsafe)
 | 0.81
-| -
+| 0.86
 |===
 
 This cop checks for `raise` or `fail` statements which are
@@ -2524,9 +2557,9 @@ end
 
 | Enabled
 | Yes
-| No
+| Yes
 | 0.51
-| -
+| 0.86
 |===
 
 This cop checks for regexp literals used as `match-current-line`.
@@ -2826,9 +2859,9 @@ foo&.bar && (foobar.baz || foo&.baz)
 
 | Enabled
 | Yes
-| No
+| Yes
 | 0.62
-| -
+| 0.87
 |===
 
 This cop checks to make sure safe navigation isn't used with `empty?` in
@@ -3274,8 +3307,7 @@ end
 | -
 |===
 
-This is not actually a cop. It does not inspect anything. It just
-provides methods to repack Parser's diagnostics/errors
+This cop repacks Parser's diagnostics/errors
 into RuboCop's offenses.
 
 == Lint/ToJSON

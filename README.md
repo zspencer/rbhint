@@ -40,7 +40,7 @@ haven't reached version 1.0 yet). To prevent an unwanted RbHint update you
 might want to use a conservative version lock in your `Gemfile`:
 
 ```rb
-gem 'rbhint', '~> 0.85.0', require: false
+gem 'rbhint', '~> 0.87.1', require: false
 ```
 
 ## Quickstart
@@ -64,6 +64,14 @@ RbHint supports the following Ruby implementations:
 * JRuby 9.2+
 
 See [compatibility](https://docs.rubocop.org/rubocop/compatibility.html) for further details.
+
+## Readme Badge
+
+If you use RuboCop in your project, you can include one of these badges in your readme to let people know that your code is written following the community Ruby Style Guide.
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
 
 ## Team
 

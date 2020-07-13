@@ -35,5 +35,5 @@ Include the output of `rbhint -V` or `bundle exec rbhint -V` if using Bundler. H
 
 ```
 $ [bundle exec] rbhint -V
-0.85.1 (using Parser 2.5.1.2, running on ruby 2.5.1 x86_64-linux)
+0.87.1 (using Parser 2.5.1.2, running on ruby 2.5.1 x86_64-linux)
 ```

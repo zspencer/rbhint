@@ -8,7 +8,7 @@ RbHint has three primary uses:
 
 In the next sections we'll briefly cover all of them.
 
-== 1. Code style checker
+== Code style checker
 
 Running `rbhint` with no arguments will check all Ruby source files
 in the current directory:
@@ -71,9 +71,11 @@ automatically fix the problems it found in your code:
 [source,sh]
 ----
 $ rbhint -a
+# or
+$ rbhint --auto-correct
 ----
 
-See xref:usage/auto_correct.adoc[Auto-correct].
+TIP: See xref:usage/auto_correct.adoc[Auto-correct] for more details.
 
 === Changing what RbHint considers to be offenses
 
@@ -85,7 +87,7 @@ project's root directory.
 
 For more information, see xref:configuration.adoc[Configuration].
 
-== 2. RbHint as a replacement for `ruby -w`
+== RbHint as a replacement for `ruby -w`
 
 RbHint natively implements almost all `ruby -w` lint warning checks, and then some. If you want you can use RbHint
 simply as a replacement for `ruby -w`:
@@ -93,6 +95,8 @@ simply as a replacement for `ruby -w`:
 [source,sh]
 ----
 $ rbhint -l
+# or
+$ rbhint --lint
 ----
 
 == 3. RbHint as a formatter
@@ -102,6 +106,8 @@ There's a handy shortcut to run auto-correction only on code layout (a.k.a. form
 [source,sh]
 ----
 $ rbhint -x
+# or
+$ rubocop --fix-layout
 ----
 
 This option was introduced in RbHint 0.57.0.
@@ -167,7 +173,7 @@ $ rbhint -h
 | Inspect files in order of modification time and stops after first file with offenses.
 
 | `--fail-level`
-| Minimum link:configuration.md#severity[severity] for exit with error code. Full severity name or upper case initial can be given. Normally, auto-corrected offenses are ignored. Use `A` or `autocorrect` if you'd like them to trigger failure.
+| Minimum xref:configuration.adoc#severity[severity] for exit with error code. Full severity name or upper case initial can be given. Normally, auto-corrected offenses are ignored. Use `A` or `autocorrect` if you'd like them to trigger failure.
 
 | `--force-exclusion`
 | Force excluding files specified in the configuration `Exclude` even if they are explicitly passed as arguments.
@@ -206,7 +212,7 @@ $ rbhint -h
 | Use available CPUs to execute inspection in parallel.
 
 | `-r/--require`
-| Require Ruby file (see link:extensions.md#loading-extensions[Loading Extensions]).
+| Require Ruby file (see xref:extensions.adoc#loading-extensions[Loading Extensions]).
 
 | `   --safe`
 | Run only safe hints.

@@ -153,6 +153,48 @@ RSpec.describe RuboCop::ConfigLoader do
         excludes = configuration_from_file['AllCops']['Exclude']
         expect(excludes).to eq([File.expand_path('vendor/**')])
       end
+
+      context 'and there is a personal config file in the home folder' do
+        before do
+          create_file('~/.rubocop.yml', <<~YAML)
+            AllCops:
+              Exclude:
+                - tmp/**
+          YAML
+        end
+
+        it 'ignores personal AllCops/Exclude' do
+          excludes = configuration_from_file['AllCops']['Exclude']
+          expect(excludes).to eq([File.expand_path('vendor/**')])
+        end
+      end
+    end
+
+    context 'when configuration has a custom name' do
+      let(:file_path) { '.custom_rubocop.yml' }
+
+      before do
+        create_file(file_path, <<~YAML)
+          AllCops:
+            Exclude:
+              - vendor/**
+        YAML
+      end
+
+      context 'and there is a personal config file in the home folder' do
+        before do
+          create_file('~/.rubocop.yml', <<~YAML)
+            AllCops:
+              Exclude:
+                - tmp/**
+          YAML
+        end
+
+        it 'ignores personal AllCops/Exclude' do
+          excludes = configuration_from_file['AllCops']['Exclude']
+          expect(excludes).to eq([File.expand_path('vendor/**')])
+        end
+      end
     end
 
     context 'when a parent file specifies DisabledByDefault: true' do
@@ -641,6 +683,7 @@ RSpec.describe RuboCop::ConfigLoader do
               default_config['Metrics/MethodLength']['VersionChanged'],
               'CountComments' => false,
               'Max' => 5,
+              'CountAsOne' => [],
               'ExcludedMethods' => []
             }
           )
@@ -949,7 +992,7 @@ RSpec.describe RuboCop::ConfigLoader do
     end
 
     context 'when a file inherits from a url inheriting from another file' do
-      let(:file_path) { '.robocop.yml' }
+      let(:file_path) { '.rubocop.yml' }
       let(:cache_file) { '.rubocop-http---example-com-rubocop-yml' }
       let(:cache_file_2) { '.rubocop-http---example-com-inherit-yml' }
 
@@ -1420,7 +1463,7 @@ RSpec.describe RuboCop::ConfigLoader do
 
     it 'uses paths relative to the .rubocop.yml, not cwd' do
       config_path = described_class.configuration_file_for('.')
-      RuboCop::PathUtil.chdir '..' do
+      Dir.chdir '..' do
         described_class.configuration_from_file(config_path)
         expect(defined?(MyClass)).to be_truthy
       end
@@ -1438,7 +1481,7 @@ RSpec.describe RuboCop::ConfigLoader do
     it 'works without a starting .' do
       config_path = described_class.configuration_file_for('.')
       $LOAD_PATH.unshift(File.dirname(config_path))
-      RuboCop::PathUtil.chdir '..' do
+      Dir.chdir '..' do
         described_class.configuration_from_file(config_path)
         expect(defined?(MyClass)).to be_truthy
       end

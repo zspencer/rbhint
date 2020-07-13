@@ -51,6 +51,10 @@ files:
 * `~/.config/rubocop/config.yml`
 * https://github.com/zspencer/rbhint/blob/development/config/default.yml[RbHint's default configuration]
 
+NOTE: All the previous logic does not apply if a specific configuration file is passed
+on the command line through the `--config` flag. In that case, the resolved
+configuration file will be the one passed to the CLI.
+
 == Inheritance
 
 All configuration inherits from https://github.com/zspencer/rbhint/blob/development/config/default.yml[RbHint's default configuration] (See
@@ -330,6 +334,11 @@ configuration file is. In configuration files that don't begin with `.rubocop`,
 e.g. `our_company_defaults.yml`, paths are relative to the directory where
 `rbhint` is run.
 
+This affects cops that have customisable paths: if the default is `db/migrate/*.rb`,
+and the cop is enabled in `db/migrate/.rubocop.yml`, the path will need to be
+explicitly set as `*.rb`, as the default will look for `db/migrate/db/migrate/*.rb`.
+This is unlikely to be what you wanted.
+
 === Unusual files, that would not be included by default
 
 RbHint comes with a comprehensive list of common ruby file names and
@@ -393,9 +402,11 @@ valid for the directory tree starting where they are defined. They are not
 shadowed by the setting of `Include` and `Exclude` in other `.rubocop.yml`
 files in subdirectories. This is different from all other parameters, who
 follow RbHint's general principle that configuration for an inspected file
-is taken from the nearest `.rubocop.yml`, searching upwards. _This behavior
+is taken from the nearest `.rubocop.yml`, searching upwards.
+
+Note: This behavior
 will be overridden if you specify the `--ignore-parent-exclusion` command line
-argument_.
+argument.
 
 === Hint-specific `Include` and `Exclude`
 

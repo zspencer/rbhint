@@ -25,7 +25,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
           x = 1
         RUBY
         create_empty_file('other/empty')
-        RuboCop::PathUtil.chdir('other') do
+        Dir.chdir('other') do
           expect(cli.run(['--format', 'simple', checked_path])).to eq(1)
         end
         expect($stdout.string).to eq(<<~RESULT)
@@ -152,6 +152,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
   it 'registers an offense for a syntax error' do
     create_file('example.rb', ['class Test', 'en'])
     expect(cli.run(['--format', 'emacs', 'example.rb'])).to eq(1)
+    expect($stderr.string).to eq ''
     expect($stdout.string)
       .to eq(["#{abs('example.rb')}:3:1: E: Lint/Syntax: unexpected " \
               'token $end (Using Ruby 2.4 parser; configure using ' \
@@ -183,6 +184,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
   it 'can process a file with an invalid UTF-8 byte sequence' do
     create_file('example.rb', ["# #{'f9'.hex.chr}#{'29'.hex.chr}"])
     expect(cli.run(['--format', 'emacs', 'example.rb'])).to eq(1)
+    expect($stderr.string).to eq ''
     expect($stdout.string)
       .to eq(<<~RESULT)
         #{abs('example.rb')}:1:1: F: Lint/Syntax: Invalid byte sequence in utf-8.
@@ -243,7 +245,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
             # RuboCop will start looking for the configuration file in the directory
             # where the inspected file is and continue its way up to the root directory.
             #
-            # See https://github.com/zspencer/rbhint/blob/development/manual/configuration.md
+            # See https://docs.rubocop.org/rubocop/configuration
           YAML
         end
       end
@@ -258,7 +260,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
       end
     end
 
-    context 'when --auto-correct is given' do
+    context 'when --auto-correct-all is given' do
       it 'does not trigger RedundantCopDisableDirective due to ' \
          'lines moving around' do
         src = ['a = 1 # rubocop:disable Lint/UselessAssignment']
@@ -270,7 +272,7 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
           Layout/EmptyLineAfterMagicComment:
             Enabled: false
         YAML
-        expect(cli.run(['--format', 'offenses', '-a', 'example.rb'])).to eq(0)
+        expect(cli.run(['--format', 'offenses', '-A', 'example.rb'])).to eq(0)
         expect($stdout.string).to eq(<<~RESULT)
 
           1  Style/FrozenStringLiteralComment
@@ -1630,14 +1632,14 @@ RSpec.describe RuboCop::CLI, :isolated_environment do
       it 'fails with an error message' do
         create_file('.rubocop.yml', <<~YAML)
           AllCops:
-            TargetRubyVersion: 2.8
+            TargetRubyVersion: 3.0
         YAML
         expect(cli.run([])).to eq(2)
         expect($stderr.string.strip).to start_with(
-          'Error: RuboCop found unknown Ruby version 2.8 in `TargetRubyVersion`'
+          'Error: RuboCop found unknown Ruby version 3.0 in `TargetRubyVersion`'
         )
         expect($stderr.string.strip).to match(
-          /Supported versions: 2.4, 2.5, 2.6, 2.7/
+          /Supported versions: 2.4, 2.5, 2.6, 2.7, 2.8/
         )
       end
     end

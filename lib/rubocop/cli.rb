@@ -101,11 +101,9 @@ module RuboCop
 
     def set_options_to_config_loader
       ConfigLoader.debug = @options[:debug]
-      ConfigLoader.auto_gen_config = @options[:auto_gen_config]
       ConfigLoader.disable_pending_cops = @options[:disable_pending_cops]
       ConfigLoader.enable_pending_cops = @options[:enable_pending_cops]
       ConfigLoader.ignore_parent_exclusion = @options[:ignore_parent_exclusion]
-      ConfigLoader.options_config = @options[:config]
     end
 
     def handle_exiting_options

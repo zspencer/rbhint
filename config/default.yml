@@ -180,6 +180,9 @@ Bundler/OrderedGems:
   VersionAdded: '0.46'
   VersionChanged: '0.47'
   TreatCommentsAsGroupSeparators: true
+  # By default, "-" and "_" are ignored for order purposes.
+  # This can be overridden by setting this parameter to true.
+  ConsiderPunctuation: false
   Include:
     - '**/*.gemfile'
     - '**/Gemfile'
@@ -200,6 +203,9 @@ Gemspec/OrderedDependencies:
   Enabled: true
   VersionAdded: '0.51'
   TreatCommentsAsGroupSeparators: true
+  # By default, "-" and "_" are ignored for order purposes.
+  # This can be overridden by setting this parameter to true.
+  ConsiderPunctuation: false
   Include:
     - '**/*.gemspec'
 
@@ -1397,6 +1403,11 @@ Lint/DuplicateCaseCondition:
   Enabled: true
   VersionAdded: '0.45'
 
+Lint/DuplicateElsifCondition:
+  Description: 'Do not repeat conditions used in if `elsif`.'
+  Enabled: 'pending'
+  VersionAdded: '0.88'
+
 Lint/DuplicateHashKey:
   Description: 'Check for duplicate keys in hash literals.'
   Enabled: true
@@ -1508,7 +1519,9 @@ Lint/InheritException:
 Lint/InterpolationCheck:
   Description: 'Raise warning for interpolation in single q strs.'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.50'
+  VersionChanged: '0.87'
 
 Lint/LiteralAsCondition:
   Description: 'Checks of literals used in conditions.'
@@ -1620,7 +1633,9 @@ Lint/RaiseException:
   Description: Checks for `raise` or `fail` statements which are raising `Exception` class.
   StyleGuide: '#raise-exception'
   Enabled: pending
+  Safe: false
   VersionAdded: '0.81'
+  VersionChanged: '0.86'
   AllowedImplicitNamespaces:
     - 'Gem'
 
@@ -1677,6 +1692,7 @@ Lint/RegexpAsCondition:
                  The regexp literal matches `$_` implicitly.
   Enabled: true
   VersionAdded: '0.51'
+  VersionChanged: '0.86'
 
 Lint/RequireParentheses:
   Description: >-
@@ -1733,6 +1749,7 @@ Lint/SafeNavigationWithEmpty:
   Description: 'Avoid `foo&.empty?` in conditionals.'
   Enabled: true
   VersionAdded: '0.62'
+  VersionChanged: '0.87'
 
 Lint/ScriptPermission:
   Description: 'Grant script file execute permission.'
@@ -1899,9 +1916,10 @@ Metrics/BlockLength:
   Description: 'Avoid long blocks with many lines.'
   Enabled: true
   VersionAdded: '0.44'
-  VersionChanged: '0.66'
+  VersionChanged: '0.87'
   CountComments: false  # count full line comments?
   Max: 25
+  CountAsOne: []
   ExcludedMethods:
     # By default, exclude the `#refine` method, as it tends to have larger
     # associated blocks.
@@ -1922,8 +1940,10 @@ Metrics/ClassLength:
   Description: 'Avoid classes longer than 100 lines of code.'
   Enabled: true
   VersionAdded: '0.25'
+  VersionChanged: '0.87'
   CountComments: false  # count full line comments?
   Max: 100
+  CountAsOne: []
 
 # Avoid complex methods.
 Metrics/CyclomaticComplexity:
@@ -1941,17 +1961,20 @@ Metrics/MethodLength:
   StyleGuide: '#short-methods'
   Enabled: true
   VersionAdded: '0.25'
-  VersionChanged: '0.59.2'
+  VersionChanged: '0.87'
   CountComments: false  # count full line comments?
   Max: 10
+  CountAsOne: []
   ExcludedMethods: []
 
 Metrics/ModuleLength:
   Description: 'Avoid modules longer than 100 lines of code.'
   Enabled: true
   VersionAdded: '0.31'
+  VersionChanged: '0.87'
   CountComments: false  # count full line comments?
   Max: 100
+  CountAsOne: []
 
 Metrics/ParameterLists:
   Description: 'Avoid parameter lists longer than three or four parameters.'
@@ -1989,10 +2012,12 @@ Naming/AccessorMethodName:
   VersionAdded: '0.50'
 
 Naming/AsciiIdentifiers:
-  Description: 'Use only ascii symbols in identifiers.'
+  Description: 'Use only ascii symbols in identifiers and constants.'
   StyleGuide: '#english-identifiers'
   Enabled: true
   VersionAdded: '0.50'
+  VersionChanged: '0.87'
+  AsciiConstants: true
 
 Naming/BinaryOperatorParameterName:
   Description: 'When defining binary operators, name the argument other.'
@@ -2159,17 +2184,18 @@ Naming/MethodParameterName:
   AllowNamesEndingInNumbers: true
   # Allowed names that will not register an offense
   AllowedNames:
-    - io
-    - id
-    - to
-    - by
-    - 'on'
-    - in
     - at
-    - ip
+    - by
     - db
+    - id
+    - in
+    - io
+    - ip
+    - of
+    - 'on'
     - os
     - pp
+    - to
   # Forbidden names that will register an offense
   ForbiddenNames: []
 
@@ -2285,6 +2311,17 @@ Style/AccessModifierDeclarations:
     - group
   AllowModifiersOnSymbols: true
 
+Style/AccessorGrouping:
+  Description: 'Checks for grouping of accessors in `class` and `module` bodies.'
+  Enabled: 'pending'
+  VersionAdded: '0.87'
+  EnforcedStyle: grouped
+  SupportedStyles:
+    # separated: each accessor goes in a separate statement.
+    # grouped: accessors are grouped into a single statement.
+    - separated
+    - grouped
+
 Style/Alias:
   Description: 'Use alias instead of alias_method.'
   StyleGuide: '#alias-method-lexically'
@@ -2308,6 +2345,14 @@ Style/AndOr:
   SupportedStyles:
     - always
     - conditionals
+
+Style/ArrayCoercion:
+  Description: >-
+                  Use Array() instead of explicit Array check or [*var], when dealing
+                  with a variable you want to treat as an Array, but you're not certain it's an array.
+  StyleGuide: '#array-coercion'
+  Enabled: 'pending'
+  VersionAdded: '0.88'
 
 Style/ArrayJoin:
   Description: 'Use Array#join instead of Array#*.'
@@ -2351,6 +2396,13 @@ Style/BeginBlock:
   StyleGuide: '#no-BEGIN-blocks'
   Enabled: true
   VersionAdded: '0.9'
+
+Style/BisectedAttrAccessor:
+  Description: >-
+                Checks for places where `attr_reader` and `attr_writer`
+                for the same method can be combined into single `attr_accessor`.
+  Enabled: 'pending'
+  VersionAdded: '0.87'
 
 Style/BlockComments:
   Description: 'Do not use block comments.'
@@ -2483,6 +2535,12 @@ Style/CaseEquality:
   #   # good
   #   String === "string"
   AllowOnConstant: false
+
+Style/CaseLikeIf:
+  Description: 'This cop identifies places where `if-elsif` constructions can be replaced with `case-when`.'
+  StyleGuide: '#case-vs-if-else'
+  Enabled: 'pending'
+  VersionAdded: '0.88'
 
 Style/CharacterLiteral:
   Description: 'Checks for uses of character literals.'
@@ -2726,6 +2784,7 @@ Style/DoubleNegation:
   VersionAdded: '0.19'
   VersionChanged: '0.84'
   EnforcedStyle: allowed_in_returns
+  SafeAutoCorrect: false
   SupportedStyles:
     - allowed_in_returns
     - forbidden
@@ -2922,12 +2981,34 @@ Style/GuardClause:
   # needs to have to trigger this cop
   MinBodyLength: 1
 
+Style/HashAsLastArrayItem:
+  Description: >-
+                 Checks for presence or absence of braces around hash literal as a last
+                 array item depending on configuration.
+  StyleGuide: '#hash-literal-as-last-array-item'
+  Enabled: 'pending'
+  VersionAdded: '0.88'
+  EnforcedStyle: braces
+  SupportedStyles:
+    - braces
+    - no_braces
+
 Style/HashEachMethods:
   Description: 'Use Hash#each_key and Hash#each_value.'
   StyleGuide: '#hash-each'
   Enabled: pending
   VersionAdded: '0.80'
   Safe: false
+
+Style/HashLikeCase:
+  Description: >-
+                  Checks for places where `case-when` represents a simple 1:1
+                  mapping and can be replaced with a hash lookup.
+  Enabled: 'pending'
+  VersionAdded: '0.88'
+  # `MinBranchesCount` defines the number of branches `case` needs to have
+  # to trigger this cop
+  MinBranchesCount: 3
 
 Style/HashSyntax:
   Description: >-
@@ -2992,6 +3073,7 @@ Style/IfUnlessModifierOfIfUnless:
                  Avoid modifier if/unless usage on conditionals.
   Enabled: true
   VersionAdded: '0.39'
+  VersionChanged: '0.87'
 
 Style/IfWithSemicolon:
   Description: 'Do not use if x; .... Use the ternary operator instead.'
@@ -3578,6 +3660,11 @@ Style/RandomWithOffset:
   Enabled: true
   VersionAdded: '0.52'
 
+Style/RedundantAssignment:
+  Description: 'Checks for redundant assignment before returning.'
+  Enabled: 'pending'
+  VersionAdded: '0.87'
+
 Style/RedundantBegin:
   Description: "Don't use begin blocks when they are not needed."
   StyleGuide: '#begin-implicit'
@@ -3606,6 +3693,27 @@ Style/RedundantException:
   Enabled: true
   VersionAdded: '0.14'
   VersionChanged: '0.29'
+
+Style/RedundantFetchBlock:
+  Description: >-
+                  Use `fetch(key, value)` instead of `fetch(key) { value }`
+                  when value has Numeric, Rational, Complex, Symbol or String type, `false`, `true`, `nil` or is a constant.
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code'
+  Enabled: 'pending'
+  Safe: false
+  # If enabled, this cop will autocorrect usages of
+  # `fetch` being called with block returning a constant.
+  # This can be dangerous since constants will not be defined at that moment.
+  SafeForConstants: false
+  VersionAdded: '0.86'
+
+Style/RedundantFileExtensionInRequire:
+  Description: >-
+                  Checks for the presence of superfluous `.rb` extension in
+                  the filename provided to `require` and `require_relative`.
+  StyleGuide: '#no-explicit-rb-to-require'
+  Enabled: 'pending'
+  VersionAdded: '0.88'
 
 Style/RedundantFreeze:
   Description: "Checks usages of Object#freeze on immutable objects."
@@ -3908,7 +4016,7 @@ Style/SymbolLiteral:
 Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
   Enabled: true
-  SafeAutoCorrect: false
+  Safe: false
   VersionAdded: '0.26'
   VersionChanged: '0.64'
   # A list of method names to be ignored by the check.

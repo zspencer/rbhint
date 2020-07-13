@@ -104,6 +104,66 @@ end
 | Boolean
 |===
 
+== Style/AccessorGrouping
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.87
+| -
+|===
+
+This cop checks for grouping of accessors in `class` and `module` bodies.
+By default it enforces accessors to be placed in grouped declarations,
+but it can be configured to enforce separating them in multiple declarations.
+
+=== Examples
+
+==== EnforcedStyle: grouped (default)
+
+[source,ruby]
+----
+# bad
+class Foo
+  attr_reader :bar
+  attr_reader :baz
+end
+
+# good
+class Foo
+  attr_reader :bar, :baz
+end
+----
+
+==== EnforcedStyle: separated
+
+[source,ruby]
+----
+# bad
+class Foo
+  attr_reader :bar, :baz
+end
+
+# good
+class Foo
+  attr_reader :bar
+  attr_reader :baz
+end
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| EnforcedStyle
+| `grouped`
+| `separated`, `grouped`
+|===
+
 == Style/Alias
 
 |===
@@ -229,6 +289,39 @@ end
 === References
 
 * https://rubystyle.guide#no-and-or-or
+
+== Style/ArrayCoercion
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.88
+| -
+|===
+
+This cop enforces the use of `Array()` instead of explicit `Array` check or `[*var]`.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+paths = [paths] unless paths.is_a?(Array)
+paths.each { |path| do_something(path) }
+
+# bad (always creates a new Array instance)
+[*paths].each { |path| do_something(path) }
+
+# good (and a bit more readable)
+Array(paths).each { |path| do_something(path) }
+----
+
+=== References
+
+* https://rubystyle.guide#array-coercion
 
 == Style/ArrayJoin
 
@@ -445,6 +538,37 @@ BEGIN { test }
 === References
 
 * https://rubystyle.guide#no-BEGIN-blocks
+
+== Style/BisectedAttrAccessor
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.87
+| -
+|===
+
+This cop checks for places where `attr_reader` and `attr_writer`
+for the same method can be combined into single `attr_accessor`.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+class Foo
+  attr_reader :bar
+  attr_writer :bar
+end
+
+# good
+class Foo
+  attr_accessor :bar
+end
+----
 
 == Style/BlockComments
 
@@ -735,6 +859,49 @@ some_string =~ /something/
 
 * https://rubystyle.guide#no-case-equality
 
+== Style/CaseLikeIf
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.88
+| -
+|===
+
+This cop identifies places where `if-elsif` constructions
+can be replaced with `case-when`.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+if status == :active
+  perform_action
+elsif status == :inactive || status == :hibernating
+  check_timeout
+else
+  final_action
+end
+
+# good
+case status
+when :active
+  perform_action
+when :inactive, :hibernating
+  check_timeout
+else
+  final_action
+end
+----
+
+=== References
+
+* https://rubystyle.guide#case-vs-if-else
+
 == Style/CharacterLiteral
 
 |===
@@ -951,6 +1118,15 @@ class A
   @@test = 10
 end
 
+class A
+  def self.test(name, value)
+    class_variable_set("@@#{name}", value)
+  end
+end
+
+class A; end
+A.class_variable_set(:@@test, 10)
+
 # good
 class A
   @test = 10
@@ -959,6 +1135,12 @@ end
 class A
   def test
     @@test # you can access class variable without offense
+  end
+end
+
+class A
+  def self.test(name)
+    class_variable_get("@@#{name}") # you can access without offense
   end
 end
 ----
@@ -3248,6 +3430,59 @@ ok
 
 * https://rubystyle.guide#no-nested-conditionals
 
+== Style/HashAsLastArrayItem
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.88
+| -
+|===
+
+Checks for presence or absence of braces around hash literal as a last
+array item depending on configuration.
+
+=== Examples
+
+==== EnforcedStyle: braces (default)
+
+[source,ruby]
+----
+# bad
+[1, 2, one: 1, two: 2]
+
+# good
+[1, 2, { one: 1, two: 2 }]
+----
+
+==== EnforcedStyle: no_braces
+
+[source,ruby]
+----
+# bad
+[1, 2, { one: 1, two: 2 }]
+
+# good
+[1, 2, one: 1, two: 2]
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| EnforcedStyle
+| `braces`
+| `braces`, `no_braces`
+|===
+
+=== References
+
+* https://rubystyle.guide#hash-literal-as-last-array-item
+
 == Style/HashEachMethods
 
 |===
@@ -3282,6 +3517,71 @@ hash.each_value { |v| p v }
 === References
 
 * https://rubystyle.guide#hash-each
+
+== Style/HashLikeCase
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| No
+| 0.88
+| -
+|===
+
+This cop checks for places where `case-when` represents a simple 1:1
+mapping and can be replaced with a hash lookup.
+
+=== Examples
+
+==== MinBranchesCount: 3 (default)
+
+[source,ruby]
+----
+# bad
+case country
+when 'europe'
+  'http://eu.example.com'
+when 'america'
+  'http://us.example.com'
+when 'australia'
+  'http://au.example.com'
+end
+
+# good
+SITES = {
+  'europe'    => 'http://eu.example.com',
+  'america'   => 'http://us.example.com',
+  'australia' => 'http://au.example.com'
+}
+SITES[country]
+----
+
+==== MinBranchesCount: 4
+
+[source,ruby]
+----
+# good
+case country
+when 'europe'
+  'http://eu.example.com'
+when 'america'
+  'http://us.example.com'
+when 'australia'
+  'http://au.example.com'
+end
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| MinBranchesCount
+| `3`
+| Integer
+|===
 
 == Style/HashSyntax
 
@@ -3683,9 +3983,9 @@ end
 
 | Enabled
 | Yes
-| No
+| Yes
 | 0.39
-| -
+| 0.87
 |===
 
 Checks for if and unless statements used as modifiers of other if or
@@ -4997,9 +5297,18 @@ multiple lines.
 
 [source,ruby]
 ----
-Thread.list.find_all do |t|
+# bad
+Thread.list.select do |t|
   t.alive?
 end.map do |t|
+  t.object_id
+end
+
+# good
+alive_threads = Thread.list.select do |t|
+  t.alive?
+end
+alive_threads.map do |t|
   t.object_id
 end
 ----
@@ -6788,6 +7097,56 @@ rand(1...7)
 
 * https://rubystyle.guide#random-numbers
 
+== Style/RedundantAssignment
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.87
+| -
+|===
+
+This cop checks for redundant assignment before returning.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+def test
+  x = foo
+  x
+end
+
+# bad
+def test
+  if x
+    z = foo
+    z
+  elsif y
+    z = bar
+    z
+  end
+end
+
+# good
+def test
+  foo
+end
+
+# good
+def test
+  if x
+    foo
+  elsif y
+    bar
+  end
+end
+----
+
 == Style/RedundantBegin
 
 |===
@@ -7003,6 +7362,111 @@ raise 'message'
 === References
 
 * https://rubystyle.guide#no-explicit-runtimeerror
+
+== Style/RedundantFetchBlock
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| No
+| Yes (Unsafe)
+| 0.86
+| -
+|===
+
+This cop identifies places where `fetch(key) { value }`
+can be replaced by `fetch(key, value)`.
+
+In such cases `fetch(key, value)` method is faster
+than `fetch(key) { value }`.
+
+=== Examples
+
+==== SafeForConstants: false (default)
+
+[source,ruby]
+----
+# bad
+hash.fetch(:key) { 5 }
+hash.fetch(:key) { true }
+hash.fetch(:key) { nil }
+array.fetch(5) { :value }
+ENV.fetch(:key) { 'value' }
+
+# good
+hash.fetch(:key, 5)
+hash.fetch(:key, true)
+hash.fetch(:key, nil)
+array.fetch(5, :value)
+ENV.fetch(:key, 'value')
+----
+
+==== SafeForConstants: true
+
+[source,ruby]
+----
+# bad
+ENV.fetch(:key) { VALUE }
+
+# good
+ENV.fetch(:key, VALUE)
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| SafeForConstants
+| `false`
+| Boolean
+|===
+
+=== References
+
+* https://github.com/JuanitoFatas/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code
+
+== Style/RedundantFileExtensionInRequire
+
+|===
+| Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+
+| Pending
+| Yes
+| Yes
+| 0.88
+| -
+|===
+
+This cop checks for the presence of superfluous `.rb` extension in
+the filename provided to `require` and `require_relative`.
+
+Note: If the extension is omitted, Ruby tries adding '.rb', '.so',
+      and so on to the name until found. If the file named cannot be found,
+      a `LoadError` will be raised.
+      There is an edge case where `foo.so` file is loaded instead of a `LoadError`
+      if `foo.so` file exists when `require 'foo.rb'` will be changed to `require 'foo'`,
+      but that seems harmless.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+require 'foo.rb'
+require_relative '../foo.rb'
+
+# good
+require 'foo'
+require 'foo.so'
+require_relative '../foo'
+require_relative '../foo.so'
+----
+
+=== References
+
+* https://rubystyle.guide#no-explicit-rb-to-require
 
 == Style/RedundantFreeze
 
@@ -8821,7 +9285,7 @@ This cop checks symbol literal syntax.
 | Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 
 | Enabled
-| Yes
+| No
 | Yes (Unsafe)
 | 0.26
 | 0.64
@@ -9954,6 +10418,8 @@ foo == 99
 foo == "bar"
 foo <= 42
 bar > 10
+"#{interpolation}" == foo
+/#{interpolation}/ == foo
 ----
 
 ==== EnforcedStyle: forbid_for_equality_operators_only

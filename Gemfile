@@ -8,12 +8,13 @@ gem 'bump', require: false
 gem 'pry'
 gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.7'
-gem 'rubocop-performance', '~> 1.6.0'
+gem 'rubocop-performance', '~> 1.7.0'
 gem 'rubocop-rspec', '~> 1.39.0'
 # Workaround for cc-test-reporter with SimpleCov 0.18.
 # Stop upgrading SimpleCov until the following issue will be resolved.
 # https://github.com/codeclimate/test-reporter/issues/418
 gem 'simplecov', '~> 0.10', '< 0.18'
+gem 'stackprof', platform: :mri
 gem 'test-queue'
 gem 'yard', '~> 0.9'
 
